@@ -438,15 +438,17 @@ Il costo totale per eseguire tutto è di 0.207 contro i 12 di prima
 
 
 
+I logical reads sono passati da 12k a 134
 
 
 
+![Schermata del 2023-05-13 19-36-23](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/2c51ba60-17b5-4ece-a4dd-e14d7b1521e1)
 
 
 
+CONFRONTO FINALE :
 
-
-
+![Schermata del 2023-05-13 19-37-37](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/1d361c83-3b8d-49f5-9da2-a8a2a6add511)
 
 
 
