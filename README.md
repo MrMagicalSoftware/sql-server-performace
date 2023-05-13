@@ -168,7 +168,17 @@ Conviene quindi crearsi INDEX MULTI SE PREVEDO CHE DEVO FARE IL RETRIEVE DEI DAT
 ![Schermata del 2023-05-13 16-50-54](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/fa8741bf-1d65-4ac4-8629-1cfecb605bf7)
 
 
-## Analyzing SQL Statements for Performance
+# Analyzing SQL Statements for Performance
+
+1. Introduction
+2. Understanding How Sqò Server Will Execute a Sql statement
+3. Reading and interpreting ad Execution Plan for a sql statement
+4. Getting Execution statitics for a sql statement
+5. Improving statement performance by Adding an index
+6. rewriting sql statements for improved performance
+7. common execution plan operations
+
+
 
 
 
