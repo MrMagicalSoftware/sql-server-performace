@@ -61,6 +61,11 @@ In un indice clusterizzato di SQL Server, la prima colonna nella chiave dell'ind
 Poiché l'indice clusterizzato determina l'ordine fisico dei dati, può migliorare le prestazioni delle query per le query che richiedono l'accesso sequenziale ai dati. Tuttavia, se la chiave dell'indice clusterizzato non viene scelta con attenzione, può portare a problemi di prestazioni e frammentazione.
 
 
+** SQL SERVER CLUSTERED INDEX STRUCTURE **
+
+![Schermata del 2023-05-13 16-07-42](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/a067348c-50fd-4370-860a-9636ee5bac89)
+
+
 
 
 
