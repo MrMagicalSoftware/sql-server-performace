@@ -131,6 +131,44 @@ Ad organizzare i dati con index che viene "sortato" per lastname e firstname.
 
 ![Schermata del 2023-05-13 16-36-11](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/1b3a35bb-8d47-44a2-ac28-216fbc38f83b)
 
+IN QUESTO CASO AVREMO CHE :
+
+INDEX VALUES POINT TO WHERE THRE CORRESPONDING DATA IS IN THE TABLE.
+ 
+
+![Schermata del 2023-05-13 16-40-42](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/e7cac084-7362-47af-a9a8-d2dca419f68b)
+
+
+
+Supporniamo che si voglia cercare uno studente con una select.
+
+
+```
+SELECT FROM STUDENTS
+WHERE LASTName='Jack' and FirstName='The ripper'
+```
+SUCCEDE Che prima viene recuperato con la tabella di destra dove
+si trova il dato, una volta recuperato id, si recupera il dato
+come visto in precedenza.
+
+![Schermata del 2023-05-13 16-45-07](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/df5cb6d1-cbeb-447f-b8f4-112d80cc95ae)
+
+
+AVVENGO QUINDI 2 OPERAZIONI , MA QUESTE 2 OPERAZIONI SONO MOLTOOO EFFIENTI ,
+RISPETTO A CERCARE SU TUTTE LE ROWS.
+
+
+Conviene quindi crearsi INDEX MULTI SE PREVEDO CHE DEVO FARE IL RETRIEVE DEI DATI.
+
+
+![Schermata del 2023-05-13 16-49-01](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/40dae7d4-29f2-48bb-804c-bf0f5a196448)
+
+
+
+
+
+
+
 
 
 
