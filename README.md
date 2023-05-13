@@ -450,16 +450,33 @@ CONFRONTO FINALE :
 
 ![Schermata del 2023-05-13 19-37-37](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/1d361c83-3b8d-49f5-9da2-a8a2a6add511)
 
+VEDIAMO UN'ALTRO ESEMPIO DI OTTIMIZZAZIONE CHE NON RICHIEDE L'AGGIUNTA DI UN INDICE
+
+
+## Rewriting sql statements for improved performance
 
 
 
 
 
+```
+select co.*
+from CourseOfferings co
+LEFT JOIN CourseEnrollments ce on co.CourseOfferingId = ce.CourseEnrollmentId
+where co.TermCode = 'SP2016' AND ce.CourseOfferingId IS NULL
+
+```
 
 
+Questa query seleziona tutti i record dalla tabella CourseOfferings (abbreviata in co) dove il campo TermCode è uguale a 'SP2016' e il CourseOfferingId non è presente nella tabella CourseEnrollments (abbreviata in ce). 
 
+In particolare, viene utilizzata una LEFT JOIN tra le due tabelle, in cui la tabella CourseOfferings viene mantenuta come tabella di base e la tabella CourseEnrollments come tabella secondaria. La condizione di join è data dalla corrispondenza tra il campo CourseOfferingId della tabella CourseOfferings e il campo CourseEnrollmentId della tabella CourseEnrollments.
 
+La clausola WHERE specifica ulteriori condizioni: il TermCode della tabella CourseOfferings deve essere uguale a 'SP2016' e il campo CourseOfferingId della tabella CourseEnrollments deve essere nullo (IS NULL).
 
+Il risultato della query sono tutti i record della tabella CourseOfferings che soddisfano le condizioni specificate nella clausola WHERE e che non hanno una corrispondenza nella tabella CourseEnrollments.
+
+ Minuto 53'
 
 
 
