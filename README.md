@@ -186,7 +186,7 @@ i dati nella maniera più corretta.
 devo analizzare correttamente le mie query e capire se sono performanti.
 Devo generare quello che si chiama PIANO DI ESECUZIONE.
 
-** PIANO DI ESECUZIONE IN SQL **
+**PIANO DI ESECUZIONE IN SQL **
 
 
 Il piano di esecuzione è un componente fondamentale del motore di database di SQL Server che determina come una query viene eseguita e restituisce i risultati. Il piano di esecuzione descrive come il motore di database di SQL Server utilizza gli indici, le tabelle, le viste e gli altri oggetti del database per elaborare una query e restituire i risultati al client.
