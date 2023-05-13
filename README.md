@@ -207,17 +207,13 @@ Supponiamo di voler eseguire questa query
 
 
 ```
-select c.DeparmentCode, c.CourseNumber, c.CourseTitle, c.Credits,ce.Grade
+select c.DepartmentCode, c.CourseNumber, c.CourseTitle, c.Credits,ce.Grade
 from CourseEnrollments ce
 inner join CourseOfferings co on co.CourseOfferingId = ce.CourseOfferingId
-inner join Course c on co.DeparmentCode = c.DeparmentCode AND co.CourseNumber = c.CourseNumber
+inner join Courses c on co.DepartmentCode = c.DepartmentCode AND co.CourseNumber = c.CourseNumber
 where ce.StudentId = 29717
 
 ```
-
-
-
-
 
 
 
