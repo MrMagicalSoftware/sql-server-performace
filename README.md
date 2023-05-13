@@ -396,6 +396,51 @@ ABBIAMO DETTO CHE QUELLO CHE DOBBIAMO MIGLIORARE E' COST 91 %
 ![Schermata del 2023-05-13 19-18-10](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/4cca8762-c81d-4763-9b07-631e61655150)
 
 
+lettura di 12000 pages dalla tabella solo per trovare
+una manciata di righe di cui abbiamo bisogno per uno studente
+
+sql mi da un suggerimento in verde di cosa posso andare a migliorare.
+
+![Schermata del 2023-05-13 19-23-56](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/c21b4ed3-00d1-4d67-ac33-2705ffee5bcf)
+
+Tasto destro e seleziono MISSING INDEX DETAILS :
+
+
+![Schermata del 2023-05-13 19-25-06](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/0ac5c87b-ee67-4237-b73e-1a563eb01f77)
+
+
+TOLGO I COMMENTI E DO UN NOME A QUESTO INDICE :
+
+
+```
+USE [Students]
+GO
+CREATE NONCLUSTERED INDEX IX_CourseEnrollments_StudentID
+ON [dbo].[CourseEnrollments] ([StudentId])
+
+GO
+
+```
+
+> EXECUTE THE COMMAND
+
+
+Vediamo ora che impatto ha avuto questa operazione.
+
+
+
+![Schermata del 2023-05-13 19-31-21](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/9122bc6a-8603-40f2-90f6-800f11125303)
+
+Siamo passati da 10.92 a 0.003
+
+
+Il costo totale per eseguire tutto è di 0.207 contro i 12 di prima
+
+
+
+
+
+
 
 
 
