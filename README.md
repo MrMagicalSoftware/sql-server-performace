@@ -35,10 +35,10 @@ https://learn.microsoft.com/it-it/sql/ssms/download-sql-server-management-studio
 
 
 
+## Import the sample database
 
 
-
-
+Import the Students.bak file
 
 
 
