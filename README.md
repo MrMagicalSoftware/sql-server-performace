@@ -231,9 +231,12 @@ In sintesi, la query seleziona le informazioni sui corsi e le informazioni sugli
 
 
 
+Per visualizzare il **piano di esecuzione** posso premere la combinazione di tasti CTRL + L
+
+![Schermata 2023-05-13 17:28:52](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/67822bbd-2a3a-4154-a0ba-1a7598311267)
 
 
-
+![Schermata del 2023-05-13 17-31-24](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/0830c9d5-73aa-4b83-a0b4-d11e18715117)
 
 
 
