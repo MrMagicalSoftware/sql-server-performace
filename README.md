@@ -85,6 +85,26 @@ VEDIAMO QUESTO ESEMPIO :
 
 ![Schermata del 2023-05-13 16-19-21](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/00d8003b-d80a-4842-8eb9-59cd1b1c8ec4)
 
+LA TABELLA STUDENTE HA COME CHIAVE PRIMARIA STUDENTID DI TIPO INTEGER.
+
+NEL NODI FOGLIA ("LEAF NODE") GLI STUDENTI SONO ORDINATI PER ID.
+
+Per attraversare l'albero mi servono sostanzialmente 3 operazioni.
+Ad esempio se voglio "trovare" lo studente con id=202,
+prendo la secondo blocco e scendo in DATA-ROWS ( DA 201-300).
+
+
+Se invece cerco uno studente per "FIRSTName" oppure "LastName" o altro,
+vedi composizione della tabella dbo.Students, questo mi crea un problema,
+perchè le foglie sono ordinati secondo un criterio per id.
+ovvero non esiste una correlazione tra il numero id e il nome
+
+Come fa a trovare il nome ?
+
+Prende come riferimento tutti i leaf node e inizia a cercare.
+
+![Schermata del 2023-05-13 16-28-53](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/eb06493d-5328-4e95-bea0-791a85cdc713)
+
 
 
 
