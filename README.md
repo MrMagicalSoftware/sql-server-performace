@@ -129,8 +129,8 @@ Ad organizzare i dati con index che viene "sortato" per lastname e firstname.
 
 
 
+![Schermata del 2023-05-13 16-36-11](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/1b3a35bb-8d47-44a2-ac28-216fbc38f83b)
 
-![Schermata del 2023-05-13 16-36-11](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/3cb50bb4-85bf-4c20-8d0a-2e59634dfd9d)
 
 
 
