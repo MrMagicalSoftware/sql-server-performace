@@ -314,9 +314,20 @@ Vediamo alcuni dettagli :
 6. Actual number of rows: questa sezione del piano di esecuzione mostra il numero effettivo di righe restituite da ogni operazione nella query durante l'esecuzione.
 
 
+![Schermata del 2023-05-13 17-56-20](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/0c241640-92b3-4219-8f8d-37cb9f4e6563)
 
 
+Se mi sposto sul nodo più a sinistra noto a quanto ammonta il costo 
+totale dell'operazione.
 
+![Schermata del 2023-05-13 18-57-40](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/39892fef-72b7-4606-9a67-b3f243fc1bf4)
+
+Cosa sono le operazioni svolte con parallelismo ?
+
+Le operazioni svolte con parallelismo si intende dividere
+un task in sotto-task, ogni task ha la propria esecuzione,
+e alla fine avviene un'operazione di merge per ottenere la soluzione finale.
+Il parallelismo consente di eseguire le query in maniera più veloce.
 
 
 
