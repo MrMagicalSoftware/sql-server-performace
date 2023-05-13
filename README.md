@@ -171,12 +171,45 @@ Conviene quindi crearsi INDEX MULTI SE PREVEDO CHE DEVO FARE IL RETRIEVE DEI DAT
 # Analyzing SQL Statements for Performance
 
 1. Introduction
-2. Understanding How Sqò Server Will Execute a Sql statement
+2. Understanding How Sql Server Will Execute a Sql statement
 3. Reading and interpreting ad Execution Plan for a sql statement
 4. Getting Execution statitics for a sql statement
 5. Improving statement performance by Adding an index
 6. rewriting sql statements for improved performance
 7. common execution plan operations
+
+
+
+ 
+Supponiamo di avere delle query che sono lente, oppure vogliamo ottimizzare 
+i dati nella maniera più corretta.
+devo analizzare correttamente le mie query e capire se sono performanti.
+Devo generare quello che si chiama PIANO DI ESECUZIONE.
+
+** PIANO DI ESECUZIONE IN SQL **
+
+
+Il piano di esecuzione è un componente fondamentale del motore di database di SQL Server che determina come una query viene eseguita e restituisce i risultati. Il piano di esecuzione descrive come il motore di database di SQL Server utilizza gli indici, le tabelle, le viste e gli altri oggetti del database per elaborare una query e restituire i risultati al client.
+
+Il piano di esecuzione è generato dal motore di database di SQL Server per ogni query che viene inviata al server. Il piano di esecuzione può essere visualizzato utilizzando diversi strumenti di monitoraggio e profilazione in SQL Server, come ad esempio l'Activity Monitor, SQL Server Management Studio, SQL Server Profiler e SQL Server Data Tools.
+
+Comprendere il piano di esecuzione può essere utile per identificare le inefficienze e le aree di miglioramento delle prestazioni nelle query. Analizzando il piano di esecuzione, è possibile identificare le operazioni costose e le operazioni che possono essere ottimizzate, come l'utilizzo di indici appropriati, la riduzione della quantità di dati letti dalle tabelle e l'utilizzo di tecniche di join efficienti.
+
+Il piano di esecuzione è uno strumento essenziale per l'ottimizzazione delle prestazioni delle query in SQL Server, che consente di comprendere il modo in cui una query viene elaborata e di identificare le aree di miglioramento delle prestazioni.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
