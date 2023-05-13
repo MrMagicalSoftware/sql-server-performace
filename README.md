@@ -24,10 +24,14 @@ https://docs.github.com/en/get-started/writing-on-github/getting-started-with-wr
 ## Tools 
 
 
+SQL SERVER DEVELOPER EDITION.
+
+https://www.microsoft.com/it-it/sql-server/sql-server-downloads
 
 
+Scaricare SQL Server Management Studio (SSMS)
 
-
+https://learn.microsoft.com/it-it/sql/ssms/download-sql-server-management-studio-ssms?view=sql-server-ver16
 
 
 
