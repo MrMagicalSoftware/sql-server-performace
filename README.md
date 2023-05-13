@@ -110,6 +110,65 @@ Questo significa che ho tanti dati la query potrebbe impiegare del tempo.
 
 ![Schermata del 2023-05-13 16-31-25](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/be6050e4-d522-4be1-ab8b-b1a58d03dbdc)
 
+Cosa possiamo fare per mitigare questo problema ?
+
+Creare un'index sulla nostra tabella per aiutare sql a trovare i dati 
+in maniera più efficiente.
+
+
+## INDEX CONCEPTS
+
+
+Abbiamo detto che bisognerebbe passare da una situazione di questo tipo :
+
+
+![Schermata del 2023-05-13 16-34-55](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/e342ec98-678d-4e0b-91da-3001736def7a)
+
+
+Ad organizzare i dati con index che viene "sortato" per lastname e firstname.
+
+
+
+
+![Schermata del 2023-05-13 16-36-11](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/3cb50bb4-85bf-4c20-8d0a-2e59634dfd9d)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
