@@ -331,13 +331,31 @@ Il parallelismo consente di eseguire le query in maniera più veloce.
 
 
 
+> TIPS : CONVIENE FOCALIZZARSI SULLE OPERAZIONI AD ALTO COSTO
+
+
+
+## Analyziong Sql statements for performance.
+
+Posso anche usare dei comandi di sql server.
 
 
 
 
 
+```
+
+set STATISTICS IO ON
+set STATISTICS TIME ON
 
 
+select c.DepartmentCode, c.CourseNumber, c.CourseTitle, c.Credits,ce.Grade
+from CourseEnrollments ce
+inner join CourseOfferings co on co.CourseOfferingId = ce.CourseOfferingId
+inner join Courses c on co.DepartmentCode = c.DepartmentCode AND co.CourseNumber = c.CourseNumber
+where ce.StudentId = 29717
+
+```
 
 
 
