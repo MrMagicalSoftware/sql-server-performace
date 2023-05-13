@@ -199,17 +199,21 @@ Il piano di esecuzione è uno strumento essenziale per l'ottimizzazione delle pr
 
 
 
+## Understanding How Sql Server Will Execute a Sql statement
+
+
+Supponiamo di voler eseguire questa query 
 
 
 
+```
+select c.DeparmentCode, c.CourseNumber, c.CourseTitle, c.Credits,ce.Grade
+from CourseEnrollments ce
+inner join CourseOfferings co on co.CourseOfferingId = ce.CourseOfferingId
+inner join Course c on co.DeparmentCode = c.DeparmentCode AND co.CourseNumber = c.CourseNumber
+where ce.StudentId = 29717
 
-
-
-
-
-
-
-
+```
 
 
 
