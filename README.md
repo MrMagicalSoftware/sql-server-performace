@@ -65,6 +65,32 @@ Poiché l'indice clusterizzato determina l'ordine fisico dei dati, può migliora
 
 ![Schermata del 2023-05-13 16-07-42](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/a067348c-50fd-4370-860a-9636ee5bac89)
 
+I DATI SONO ORGANIZZATI SOTTO FORMA DI ALBERO.
+Nel leaf node sono i dati veri e propri,
+ognuno di questi leaf node è come se fosse una pagina in sql-server,
+i dati quindi vengono organizzati in modo ordinato,
+secondo una cluster key della tabella.
+Di Default la chiave primaria della tabella corrisponde alla cluser key.
+
+> DEFAULT PRIMA KEY DELLA TABELLA === CLUSTER KEY
+
+
+VEDIAMO QUESTO ESEMPIO :
+
+
+
+![Schermata del 2023-05-13 16-18-22](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/3f3e2144-64ea-4e72-896c-84083d20ed69)
+
+
+
+![Schermata del 2023-05-13 16-19-21](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/00d8003b-d80a-4842-8eb9-59cd1b1c8ec4)
+
+
+
+
+
+
+
 
 
 
