@@ -165,9 +165,10 @@ Conviene quindi crearsi INDEX MULTI SE PREVEDO CHE DEVO FARE IL RETRIEVE DEI DAT
 
 
 
+![Schermata del 2023-05-13 16-50-54](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/fa8741bf-1d65-4ac4-8629-1cfecb605bf7)
 
 
-
+## Analyzing SQL Statements for Performance
 
 
 
