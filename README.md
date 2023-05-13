@@ -106,8 +106,9 @@ Prende come riferimento tutti i leaf node e inizia a cercare.
 ![Schermata del 2023-05-13 16-28-53](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/eb06493d-5328-4e95-bea0-791a85cdc713)
 
 
+Questo significa che ho tanti dati la query potrebbe impiegare del tempo.
 
-
+![Schermata del 2023-05-13 16-31-25](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/be6050e4-d522-4be1-ab8b-b1a58d03dbdc)
 
 
 
