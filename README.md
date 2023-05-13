@@ -18,3 +18,29 @@ https://docs.github.com/en/get-started/writing-on-github/getting-started-with-wr
 # GETTING STARTED
 ## INTRODUCTION
 
+ ![SQL1](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/a3fac35a-b10e-400b-a548-96930cf9f14f)
+
+
+## Tools 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
