@@ -735,7 +735,18 @@ Sulla chiave posso fare 2 tipi di operazione :
 ![Schermata del 2023-05-14 19-59-25](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/7cc8fadc-33db-41c1-8dd4-2b960b2b5ec6)
 
 
+______________________________________________________
 
+
+La scelta degli indici giusti per il proprio database dipende dalle esigenze specifiche della propria applicazione e dal modo in cui vengono effettuate le query sui dati. Gli indici possono migliorare notevolmente le prestazioni delle query, ma un uso scorretto degli stessi può anche avere un impatto negativo sulle prestazioni generali del database.
+
+In linea generale, gli indici dovrebbero essere creati per le colonne che vengono spesso utilizzate nelle clausole WHERE e JOIN delle query. In questo modo, il motore di database può utilizzare l'indice per trovare rapidamente le righe di dati corrispondenti alla query.
+
+Tuttavia, la creazione di troppi indici può causare problemi di prestazioni, poiché ogni indice aggiuntivo comporta un costo in termini di spazio su disco e tempo di aggiornamento dei dati. Inoltre, gli indici possono diventare inutili o persino dannosi se vengono creati su colonne che non vengono utilizzate frequentemente nelle query o se le query coinvolgono molte tabelle.
+
+Per determinare quali indici creare, è utile monitorare le query eseguite sul database e analizzare i piani di esecuzione delle query per individuare eventuali aree che potrebbero beneficiare di un indice. Inoltre, è possibile utilizzare gli strumenti di analisi delle prestazioni forniti da SQL Server per identificare le query che richiedono più tempo e risorse del necessario.
+
+La scelta degli indici giusti dipende dalle specifiche esigenze del database e delle query eseguite. Un uso ponderato degli indici può migliorare significativamente le prestazioni del database, ma è importante evitare di creare indici superflui o dannosi.
 
 
 
