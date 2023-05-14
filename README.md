@@ -719,6 +719,32 @@ key are located
 ![Schermata del 2023-05-14 19-45-39](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/87309f49-2bb7-47df-9384-a4e4fff34f01)
 
 
+Sulla chiave posso fare 2 tipi di operazione :
+
+**SCAN VS Seek Operation
+
+![Schermata del 2023-05-14 19-48-08](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b7f7fd40-ad41-459d-9c3c-725a6aebfd66)
+
+
+
+![Schermata del 2023-05-14 19-47-50](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/fd8d4a9a-0b08-48a5-aaf1-52b0a1247e83)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
