@@ -778,11 +778,11 @@ Ci sono 2 motivazioni per questo :
 ![Schermata del 2023-05-14 20-15-41](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/edc2add3-39cb-4cfd-9c6b-991f4b189a69)
 
 
+_______________________________________________________________________________________________________
 
 
 
-
-
+## Why index column order matters ?
 
 
 
