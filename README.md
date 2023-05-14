@@ -705,10 +705,18 @@ In generale, si consiglia di utilizzare un clustered index sulla colonna di chia
 ![Schermata del 2023-05-14 19-00-54](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/235338b6-97f5-450a-b3f6-63cffaeeb396)
 
 
+Nota :
+
+In  genere la cluster index è costituita sulla chiave primaria della tabella.
+tutti gli altri index che creiamo sulla tabella vengono chiamati "non cluster index"
+
+Non cluster index is built over one or more columuns of the table witch define the index
+key and the index also stored a row pointer where the table the matching rows for that index
+key are located 
 
 
 
-
+![Schermata del 2023-05-14 19-45-39](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/87309f49-2bb7-47df-9384-a4e4fff34f01)
 
 
 
