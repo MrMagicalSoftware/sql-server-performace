@@ -702,6 +702,24 @@ In generale, si consiglia di utilizzare un clustered index sulla colonna di chia
 
 
 
+![Schermata del 2023-05-14 19-00-54](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/235338b6-97f5-450a-b3f6-63cffaeeb396)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
