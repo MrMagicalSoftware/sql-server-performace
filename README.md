@@ -729,9 +729,10 @@ Sulla chiave posso fare 2 tipi di operazione :
 
 ![Schermata del 2023-05-14 19-47-50](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/fd8d4a9a-0b08-48a5-aaf1-52b0a1247e83)
 
+### What should i index in my database ?
 
 
-
+![Schermata del 2023-05-14 19-59-25](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/7cc8fadc-33db-41c1-8dd4-2b960b2b5ec6)
 
 
 
