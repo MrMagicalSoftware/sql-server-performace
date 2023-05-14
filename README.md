@@ -759,6 +759,7 @@ Add Indexes for where clause Criteria
 
 
 
+![Schermata del 2023-05-14 20-05-38](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/2d531bcf-1283-436b-baee-58cb15f3228e)
 
 
 
