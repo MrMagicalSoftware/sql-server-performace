@@ -625,7 +625,59 @@ In sintesi, Hash Join è una tecnica di join potente e flessibile che può esser
 
 
 
+**RIASSUNTO**
+
+
+![Schermata del 2023-05-14 18-07-22](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/90c9d302-4c24-4c73-aad6-e53df41d8a9c)
+
+NOTA : QUANDO SI INCONTRANO LE OPERAZIONI DI JOIN SI LEGGONO BOTTOM.TOP
+
+![Schermata del 2023-05-14 18-09-03](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/0c3d87a7-d604-4873-8019-20ae476a5786)
+
+
+NOTA : RICORDARSI DI FOCALIZZARE LA NOSTRA ATTENZIONE
+SUI COSTI MAGGIORI.
+
+
+![Schermata del 2023-05-14 18-10-36](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/773439c3-8ca3-4454-b3b2-661093ce05e0)
+
+
+NOTA : SULLA PARTE PIU' A SINISTRA PER AVERE UNA STIMA DEL COSTO TOTALE GUARDO QUESTO :
+
+
+
+![Schermata del 2023-05-14 18-12-01](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/cb2b0f6e-f952-4aa7-9ad6-c1beed90ae58)
+
+
+
+FOCALIZZARE LA NOSTRA ATTENZIONE SUI LOGICAL READS :
+
+
+![Schermata del 2023-05-14 18-13-28](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/8025f172-8bf7-4151-9036-9f035da66649)
+
+
+
+**TUNING OPERATIONS**
+
+![Schermata del 2023-05-14 18-15-56](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/2f0e8b10-0181-4f1f-9e1e-098c3cd9f182)
+
+![Schermata del 2023-05-14 18-17-04](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/056a8d9b-f240-4aca-ac5c-d3bffa63e63e)
+
+
 MATERIALE GRATUITO DI APPROFONDIMENTO :
 
 https://www.red-gate.com/simple-talk/books/sql-server-execution-plans-third-edition-by-grant-fritchey/
+
+
+
+
+# Building EFFECTIVE Indexes
+
+
+
+
+
+
+
+
 
