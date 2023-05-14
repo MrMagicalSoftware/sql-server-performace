@@ -542,7 +542,24 @@ Di seguito spiego i diversi tipi di accesso all'indice:
 
 L'utilizzo di un indice può migliorare significativamente le prestazioni delle query, ma il tipo di accesso all'indice utilizzato dipende dalla struttura dell'indice e dalla query stessa.
 
+_________________________________________
 
+SCAN OPERATION VS SEEK OPERATION
+
+> SCAN OPERATION MEANS THAT SQL SERVER IS READING THE ENTIRE DATA STRUCTURE
+
+
+Le differenze principali tra le operazioni di scan e seek in SQL Server riguardano la modalità di accesso ai dati e l'efficienza della query.
+
+Le operazioni di **scan** implicano la scansione di tutte le righe di una tabella o di un indice, mentre le operazioni di seek utilizzano un indice per cercare e accedere alle righe specifiche richieste dalla query. In altre parole, le operazioni di scan richiedono di leggere tutte le righe della tabella o dell'indice, mentre le operazioni di seek cercano solo le righe necessarie e recuperano solo quelle.
+
+Le operazioni di scan sono generalmente meno efficienti delle operazioni di seek in termini di prestazioni perché richiedono più tempo per elaborare e recuperare i dati. Tuttavia, le operazioni di scan possono essere più efficienti in alcune situazioni in cui la maggior parte o tutte le righe della tabella devono essere lette, ad esempio quando si esegue un backup completo di un database.
+
+Le operazioni di seek sono generalmente più efficienti delle operazioni di scan in termini di prestazioni perché richiedono meno tempo per recuperare i dati richiesti dalla query. Tuttavia, le operazioni di seek richiedono che la tabella abbia un indice appropriato per supportare la query, altrimenti il motore di database dovrà utilizzare le operazioni di scan per recuperare i dati richiesti.
+
+**NOTA :**
+
+Le operazioni di scan sono utilizzate quando è necessario accedere a molte o tutte le righe di una tabella, mentre le operazioni di seek sono utilizzate quando è necessario accedere solo a un sottoinsieme specifico di righe. L'uso corretto di queste operazioni dipende dalle esigenze specifiche della query e dalla struttura dell'indice e della tabella.
 
 
 
