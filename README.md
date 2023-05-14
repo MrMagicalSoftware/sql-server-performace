@@ -476,7 +476,43 @@ La clausola WHERE specifica ulteriori condizioni: il TermCode della tabella Cour
 
 Il risultato della query sono tutti i record della tabella CourseOfferings che soddisfano le condizioni specificate nella clausola WHERE e che non hanno una corrispondenza nella tabella CourseEnrollments.
 
- Minuto 53'
+
+> controllare minuto 53
+
+The issue here is that sql server is looking for all the enrollments for each course.
+when we really only need to know if there is any student enroll in the course
+since we are looking up all the enviroments these operations turns out to be pretty
+expensive making our whole query pretty exprensive.
+Now in this case the answare is not an index but instead for us to change how we
+write this query.
+So let's take and alternate approach.
+
+
+```
+select co.*
+from CourseOfferings co
+Where NOT EXISTS
+(SELECT 1 FROM CourseEnrollments ce WHERE co.CourseOfferingId = ce.CourseEnrollmentId)
+AND co.TermCode = 'SP2016'
+
+```
+
+Otteniamo lo stesso risultato in termini di ricerca.
+ma l'ottimizzazione della querty è notevolmente migliorata.
+
+
+
+
+![Schermata del 2023-05-14 16-19-29](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/144c508e-1d88-4a89-ad97-1a8a368b4fdd)
+
+
+
+
+
+
+
+
+
 
 
 
