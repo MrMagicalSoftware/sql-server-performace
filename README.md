@@ -721,7 +721,7 @@ key are located
 
 Sulla chiave posso fare 2 tipi di operazione :
 
-**SCAN VS Seek Operation
+**OPERAZIONI SULLA CHIVE SCAN VS Seek Operation**
 
 ![Schermata del 2023-05-14 19-48-08](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b7f7fd40-ad41-459d-9c3c-725a6aebfd66)
 
