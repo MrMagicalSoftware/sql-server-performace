@@ -1,6 +1,12 @@
 # sql-server-performace
 
 
+
+SQL SERVER 2019 
+https://go.microsoft.com/fwlink/?linkid=866662
+
+
+
 FORMAT A GIT README :
 
 https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
@@ -501,18 +507,40 @@ Otteniamo lo stesso risultato in termini di ricerca.
 ma l'ottimizzazione della querty è notevolmente migliorata.
 
 
-
-
 ![Schermata del 2023-05-14 16-19-29](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/144c508e-1d88-4a89-ad97-1a8a368b4fdd)
 
 
 
+## Rewriting a statement smetimes improves performance.
+
+**Common Execution Plan Operations**
 
 
+________________________
 
+Nota pratica :
 
+Subqueries can be rewritten as joins
+Joins can be rewritten as subqueries
+Exists and not exists are best in some scenarios
 
+_______________________
 
+In SQL Server, quando si eseguono query su grandi tabelle, il motore di database deve trovare rapidamente i dati richiesti. Per fare questo, il motore utilizza gli indici, che sono strutture dati che consentono di accedere ai dati più velocemente rispetto alla scansione dell'intera tabella. Tuttavia, il tipo di accesso all'indice utilizzato dipende dalla struttura dell'indice e dalla query stessa.
+
+Di seguito spiego i diversi tipi di accesso all'indice:
+
+- Clustered Index Scan: questo tipo di accesso all'indice viene utilizzato quando viene richiesto l'intero contenuto di una tabella indicizzata in modo cluster. Questo tipo di accesso all'indice legge tutte le pagine della tabella per trovare i dati richiesti e quindi può essere molto costoso in termini di tempo.
+
+- Table Scan: questo tipo di accesso all'indice viene utilizzato quando una query richiede l'intero contenuto di una tabella che non ha un indice o quando l'indice non può essere utilizzato per una particolare query. Questo tipo di accesso all'indice legge tutte le pagine della tabella e può essere molto costoso in termini di tempo, soprattutto per le tabelle di grandi dimensioni.
+
+- Clustered Index Seek: questo tipo di accesso all'indice viene utilizzato quando viene richiesto un sottoinsieme dei dati di una tabella indicizzata in modo cluster. In questo tipo di accesso all'indice, il motore di database utilizza l'indice cluster per trovare la posizione della pagina di dati richiesta e quindi recupera solo i dati richiesti. Questo tipo di accesso all'indice è generalmente molto efficiente.
+
+- Index Scan: questo tipo di accesso all'indice viene utilizzato quando una query richiede l'intero contenuto di una tabella che ha un indice non cluster o quando l'indice non può essere utilizzato per una particolare query. Questo tipo di accesso all'indice legge tutte le pagine dell'indice e quindi accede alle pagine di dati richieste. Può essere efficiente se l'indice è piccolo o se la maggior parte dei dati deve essere recuperata.
+
+- Index Seek: questo tipo di accesso all'indice viene utilizzato quando viene richiesto un sottoinsieme dei dati di una tabella indicizzata non cluster. In questo tipo di accesso all'indice, il motore di database utilizza l'indice non cluster per trovare la posizione della pagina di dati richiesta e quindi recupera solo i dati richiesti. Questo tipo di accesso all'indice è generalmente molto efficiente.
+
+L'utilizzo di un indice può migliorare significativamente le prestazioni delle query, ma il tipo di accesso all'indice utilizzato dipende dalla struttura dell'indice e dalla query stessa.
 
 
 
