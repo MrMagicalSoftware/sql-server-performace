@@ -674,6 +674,34 @@ https://www.red-gate.com/simple-talk/books/sql-server-execution-plans-third-edit
 # Building EFFECTIVE Indexes
 
 
+1. Index Terminology refresher
+2. What columns should i index?
+3. Why column order matters in an index
+4. Index selectivity
+5. Include columns and covering indexes
+6. Functions in the where clause and indexes.
+7. Over Indexing
+8. Sql server's index recommendations
+
+
+
+
+### INDEX TERMINOLOGY REFRESHER
+
+
+**CLURESTED VS NON-CLUSTERED INDEXES**
+
+
+In SQL Server, gli indici vengono utilizzati per migliorare le prestazioni delle query, consentendo al motore di database di accedere rapidamente ai dati richiesti. Esistono due tipi principali di indici in SQL Server: clustered e non-clustered.
+
+Un clustered index ordina fisicamente i dati della tabella in base alla colonna di indice selezionata. Ogni tabella può avere solo un clustered index, e di solito viene utilizzato per la colonna di chiave primaria della tabella. Quando si esegue una query che fa riferimento alla colonna di indice del clustered index, SQL Server può accedere direttamente alle righe di dati in base all'ordine della colonna di indice, rendendo le ricerche più efficienti. Tuttavia, gli aggiornamenti frequenti dei dati nella tabella possono causare una sovrapposizione e una frammentazione dei dati, il che può causare un impatto negativo sulle prestazioni.
+
+Un non-clustered index, d'altra parte, non riordina fisicamente i dati della tabella. Invece, crea una struttura di indice separata che fa riferimento alla posizione fisica dei dati nella tabella. Un non-clustered index può essere creato su qualsiasi colonna della tabella e una singola tabella può avere più di un non-clustered index. Quando si esegue una query che fa riferimento alla colonna di indice di un non-clustered index, SQL Server utilizza l'indice per trovare la posizione fisica dei dati nella tabella, rendendo le ricerche più efficienti. Tuttavia, poiché i dati della tabella non sono riordinati, l'accesso ai dati stessi potrebbe essere più lento rispetto a un clustered index.
+
+In generale, si consiglia di utilizzare un clustered index sulla colonna di chiave primaria della tabella, poiché questo offre il miglior supporto per le operazioni di ricerca e ordinamento. Tuttavia, se si desidera creare un indice su una colonna che non sia la chiave primaria, un non-clustered index potrebbe essere la scelta migliore. Inoltre, se la tabella subisce frequenti operazioni di aggiornamento, può essere preferibile utilizzare un non-clustered index per ridurre l'impatto sulle prestazioni delle operazioni di aggiornamento. In ogni caso, la scelta tra un clustered index e un non-clustered index dipende dalle esigenze specifiche della query e dalle caratteristiche della tabella coinvolta.
+
+
+
 
 
 
