@@ -749,6 +749,12 @@ Per determinare quali indici creare, è utile monitorare le query eseguite sul d
 La scelta degli indici giusti dipende dalle specifiche esigenze del database e delle query eseguite. Un uso ponderato degli indici può migliorare significativamente le prestazioni del database, ma è importante evitare di creare indici superflui o dannosi.
 
 
+**Example**
+
+Add Indexes for where clause Criteria
+
+
+![Schermata del 2023-05-14 20-04-17](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/4e6791e2-18a5-4d38-90b1-3949f47e7c43)
 
 
 
