@@ -562,18 +562,70 @@ Le operazioni di seek sono generalmente più efficienti delle operazioni di scan
 Le operazioni di scan sono utilizzate quando è necessario accedere a molte o tutte le righe di una tabella, mentre le operazioni di seek sono utilizzate quando è necessario accedere solo a un sottoinsieme specifico di righe. L'uso corretto di queste operazioni dipende dalle esigenze specifiche della query e dalla struttura dell'indice e della tabella.
 
 
+L'idea di fondo è quella di dire che quando nel piano di esecuzione vediamo delle operazioni di scan
+dobbiamo capire perchè vengono fatte in questo modo, e magari modificarle in seek operation.
+
+
+________________________________________________________________________________________
+
+
+
+![Schermata del 2023-05-14 17-46-03](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/8e15c79a-5d88-45be-8384-00f2d61ad71a)
 
 
 
 
 
+Le join operations sono uno dei concetti fondamentali in SQL Server per combinare i dati di più tabelle in una singola query. Ci sono diverse tecniche di join disponibili, tra cui Nested Loops Join e Merge Join.
+
+Nested Loops Join è una tecnica di join che utilizza un loop nidificato per confrontare ogni riga di una tabella con ogni riga di un'altra tabella. Questa tecnica di join è adatta per le tabelle di piccole o medie dimensioni e quando le tabelle coinvolte hanno un indice adeguato per la colonna di join. Nested Loops Join utilizza l'indice su una delle tabelle e la scansione completa dell'altra tabella. L'algoritmo esamina ogni riga della prima tabella e cerca le corrispondenti righe nella seconda tabella, utilizzando l'indice, una alla volta. Questa tecnica può essere molto inefficiente se le tabelle coinvolte sono molto grandi o se l'indice non è ottimizzato.
+
+Esempio:
+SELECT *
+FROM tabella1
+INNER JOIN tabella2
+ON tabella1.colonna = tabella2.colonna;
+
+Merge Join è una tecnica di join che ordina le tabelle di input in base alla colonna di join e quindi scansiona le tabelle simultaneamente. Questa tecnica di join è adatta per le tabelle di grandi dimensioni e quando le tabelle hanno già un indice sulla colonna di join. Merge Join è particolarmente efficiente quando le tabelle sono ordinate sulla colonna di join. L'algoritmo utilizza due buffer per mantenere le righe della prima e della seconda tabella, mentre le scansiona in modo sincronizzato. Questa tecnica richiede un po' più di tempo per eseguire la preparazione dei dati, ma una volta che i dati sono ordinati, la join stessa è molto veloce.
+
+Esempio:
+SELECT *
+FROM tabella1
+INNER JOIN tabella2
+ON tabella1.colonna = tabella2.colonna
+ORDER BY tabella1.colonna, tabella2.colonna;
+
+In sintesi, Nested Loops Join è una buona scelta per tabelle di piccole o medie dimensioni, mentre Merge Join è più adatto per tabelle di grandi dimensioni. La scelta della tecnica di join corretta dipende dalle esigenze specifiche della query e dalla struttura delle tabelle coinvolte. Inoltre, l'utilizzo degli indici corretti può migliorare significativamente le prestazioni delle operazioni di join.
 
 
 
+Hash Join è una tecnica di join utilizzata in SQL Server per combinare grandi tabelle di dati. A differenza di Nested Loops Join e Merge Join, Hash Join non utilizza l'ordinamento o l'indice per eseguire la join. Invece, Hash Join crea una tabella hash temporanea che contiene le colonne di join delle tabelle di input.
+
+Il processo di Hash Join può essere suddiviso in tre fasi principali:
+
+1. Hash Table Build: per la prima tabella di input, SQL Server crea una tabella hash temporanea, che contiene la colonna di join e il valore della colonna associata per ogni riga. Il valore della colonna di join viene utilizzato come chiave per l'hashing.
+
+2. Hash Table Probe: per la seconda tabella di input, SQL Server confronta ogni riga con la tabella hash temporanea creata nella fase precedente. Per ogni riga nella seconda tabella, SQL Server cerca la corrispondente riga nella tabella hash temporanea utilizzando l'hashing sulla colonna di join.
+
+3. Join Results: se SQL Server trova una corrispondenza nella tabella hash temporanea, unisce le righe di input e restituisce il risultato della join. Questo processo continua finché tutte le righe nella seconda tabella di input sono state confrontate con la tabella hash temporanea.
+
+Hash Join è particolarmente efficiente quando le tabelle di input sono grandi e non sono ordinate sulla colonna di join. Inoltre, Hash Join richiede una quantità limitata di memoria temporanea per creare la tabella hash. Tuttavia, Hash Join può essere meno efficiente se la colonna di join non ha valori unici o se la tabella hash temporanea diventa troppo grande per essere mantenuta in memoria.
+
+Esempio:
+SELECT *
+FROM tabella1
+INNER HASH JOIN tabella2
+ON tabella1.colonna = tabella2.colonna;
+
+In sintesi, Hash Join è una tecnica di join potente e flessibile che può essere utilizzata per combinare grandi tabelle di dati in SQL Server. Tuttavia, come per tutte le tecniche di join, la scelta della tecnica corretta dipende dalle esigenze specifiche della query e dalla struttura delle tabelle coinvolte.
 
 
 
+![Schermata del 2023-05-14 17-53-24](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/cfa7e0c9-9887-4011-9fb5-89a017a2faac)
 
 
 
+MATERIALE GRATUITO DI APPROFONDIMENTO :
+
+https://www.red-gate.com/simple-talk/books/sql-server-execution-plans-third-edition-by-grant-fritchey/
 
