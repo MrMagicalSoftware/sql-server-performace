@@ -544,7 +544,7 @@ L'utilizzo di un indice può migliorare significativamente le prestazioni delle 
 
 _________________________________________
 
-SCAN OPERATION VS SEEK OPERATION
+**SCAN OPERATION VS SEEK OPERATION**
 
 > SCAN OPERATION MEANS THAT SQL SERVER IS READING THE ENTIRE DATA STRUCTURE
 
