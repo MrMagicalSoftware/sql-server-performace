@@ -761,13 +761,21 @@ Add Indexes for where clause Criteria
 
 ![Schermata del 2023-05-14 20-05-38](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/2d531bcf-1283-436b-baee-58cb15f3228e)
 
+![Schermata del 2023-05-14 20-08-23](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/1cff96c3-0bf6-4087-b083-f531f95d109c)
 
 
+Seconda categoria di colonne di cui vogliamo essere sicuri che che abbiamo l'index
+sono le foreign key columns nella nostra tabella.
+Ci sono 2 motivazioni per questo :
+
+1. Quando facciamo il join di 2 tabelle, sql server guarda le righe in una tabella e poi trova la corrispondenza delle righe nella seconda tabella
+
+2.Quando facciamo una query sulla nostra applicazione,  utilizziamo la foreign per caricare i dati
 
 
+![Schermata del 2023-05-14 20-15-21](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/5b35f29d-d876-4141-bd3b-1044a0332870)
 
-
-
+![Schermata del 2023-05-14 20-15-41](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/edc2add3-39cb-4cfd-9c6b-991f4b189a69)
 
 
 
