@@ -892,6 +892,7 @@ Per creare un indice in maniera corretta devo pensare a come i dati saranno rice
 ## Index Selectivity Explained
 
 
+![Schermata del 2023-05-17 20-00-40](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b89f5afd-7d93-4a29-b3bb-c235c523ca1f)
 
 
 
