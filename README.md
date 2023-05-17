@@ -785,6 +785,118 @@ ________________________________________________________________________________
 ## Why index column order matters ?
 
 
+Un esempio di creazione è il seguente di index è il seguente.
+
+```
+CREATE INDEX IX_Applicants_FirstNameLastName
+    ON Applicants(FirstName, LastName , State).
+
+```
+
+La query che vogliamo lanciare è la seguente :
+
+
+```
+SELECT * FROM Applicats WHERE LastName='Davis' AND State='CO';
+```
+
+Le colonne sono inserite per ordine , FirstName, LastName,State
+
+Vediamo il piano di esecuzione che fa sql.
+
+
+![Schermata del 2023-05-17 19-06-59](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/6bce9d57-f50a-489c-b134-2403c71a5150)
+
+Si ha un'operazione di scan sull'indice e questa operazione **SCAN OPERATION** legge l'intero index,
+quindi non usa la struttura ad albero dell'index  **TREE STRUCTURE OF THE INDEX** , per trovare la corrispondenza
+ma invece raggiunge ogni chiave dell'index per trovare il valore che fa corrispondenza.
+Noi invece vogliamo una seek operation perchè significa che sql sta usando tree-strucure, e l'indice è organizzato per trovare la chiave corrispondente, e questo è molto più efficiente.
+La ragione per cui sql server usa un'operazione di scan piuttosto che seek operation è perchè la clausula where NON INCLUDE LA PRIMA COLONNA DELL'INDEX, che nel nostro caso è FirstNameColumn,
+se non si include la prima colonna dell'index nella clausula where SQL -SERVER , non sarà in grado di usare l'index e eseguirà un'operazione di san sull'intero index
+
+
+![Schermata del 2023-05-17 19-24-55](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/4c6495e2-eae0-42dd-a083-2c5cdd89f349)
+
+
+![Schermata del 2023-05-17 19-25-57](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/219505c8-c31d-4472-9148-23fa7ad2284e)
+
+> FIX IT
+
+Per sistemare dobbiamo cambiare l'ordine delle colonne nel nostro index.
+Il primo passaggio consiste nel fare il drop dell'indice corrente.
+
+```
+DROP INDEX IX_Applicants_FirstNameLastName
+   ON Applicants;
+```
+
+Ricreiamo nuovamente l'indice.
+
+
+```
+CREATE INDEX IX_Applicants_FirstNameLastName
+    ON Applicants( LastName,FirstName , State).
+
+```
+
+Ripropongo la stessa query  :
+
+
+```
+SELECT * FROM Applicats WHERE LastName='Davis' AND State='CO';
+```
+
+Possiamo vedere ora che il tipo di operazione che viene svolta è di tipo Seek :
+
+
+![Schermata del 2023-05-17 19-31-20](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b8db939f-9cdd-4ae5-a520-992a26d09543)
+
+Questo ha un'efficiente maggiore rispetto a prima.
+
+
+![Schermata del 2023-05-17 19-32-39](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/e8872790-aa4f-41b9-843b-a0e458de023d)
+
+
+Estimated SubTree Costo  = 1.42808.
+
+Mentre se attivo le statistiche si ottiene che :
+
+
+
+![Schermata del 2023-05-17 19-34-11](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b1c5f1fa-61df-4c56-af3c-e06fa57ac6b3)
+
+
+Per creare un indice in maniera corretta devo pensare a come i dati saranno ricercati .
+
+
+![Schermata del 2023-05-17 19-35-51](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/45284c39-115d-4c8d-b61a-b3c8de87e907)
+
+
+![Schermata del 2023-05-17 19-36-13](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/3827ce34-3574-4268-a2f9-ba8f83389334)
+
+
+![Schermata del 2023-05-17 19-37-16](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/19f62f6f-7733-4bb5-9ab6-97c11a0eeac9)
+
+
+
+![Schermata del 2023-05-17 19-39-36](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/87d5b78a-e5ae-4000-bb0c-d8fdf732809b)
+
+
+![Schermata del 2023-05-17 19-39-59](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/65d66331-08d2-4281-8dc0-b40cfc965c55)
+
+
+
+![Schermata del 2023-05-17 19-40-22](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/25d1fbfe-4387-48a4-8848-e560b143b935)
+
+
+
+
+
+
+
+
+
+
 
 
 
