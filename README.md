@@ -1023,6 +1023,19 @@ ________________________________________________________________________________
 
 
 
+Selectivity :
+Number of rows matching the predicate / total number of rows
+
+
+--High selecticity means low number of records are being returned
+--Low selectivity means hight number of records are being returned
+
+
+
+
+
+
+
 
 
 
@@ -1147,6 +1160,33 @@ Vedo INDEX SEEK OPERATION
 
 
 _________________________________________________________________
+
+
+
+## LIKE CLAUSES AND INDEX SELECTIVITY
+
+
+UN CASO SPECIALE DI SELETTIVITA' LO ABBIAMO QUANDO 
+UTILIZZIAMO LA CLAUSULA DI LIKE.
+
+
+
+```
+SELECT * 
+FROM Applicants
+WHERE LastName LIKE '%HARRIES%'
+AND FirstName LIKE '%Thomas%'
+
+```
+
+
+
+
+
+
+
+
+
 
 
 
