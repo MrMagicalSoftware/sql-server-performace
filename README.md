@@ -976,24 +976,7 @@ la selectivity ci aiuta a determinare la quantità di dati che una query dovrà 
 ________________________________________________
 
 
-Per comprendere il concetto di "selectivity index" in SQL, è utile comprendere prima l'indice stesso e poi la sua selectivity.
 
-In SQL, un indice è una struttura di dati che viene creata su una o più colonne di una tabella per migliorare le prestazioni delle query. L'indice consente al database di recuperare più rapidamente i dati desiderati, fornendo un percorso di accesso più efficiente.
-
-La selectivity, o selettività, si riferisce alla distinzione e alla distribuzione dei valori unici all'interno di una colonna indicizzata. Indica quanto un valore specifico in una colonna sia selettivo, cioè quanti record corrispondono a quel valore rispetto al totale dei record nella tabella.
-
-Supponiamo di avere una tabella chiamata "Utenti" con una colonna "Stato" che può contenere i valori "Attivo" o "Inattivo". Abbiamo anche creato un indice sulla colonna "Stato" per migliorare le prestazioni delle query.
-
-Se nella tabella "Utenti" ci sono 1000 record, di cui 900 hanno lo stato "Attivo" e 100 hanno lo stato "Inattivo", la selectivity dell'indice sulla colonna "Stato" sarà:
-
-- Per lo stato "Attivo": 900/1000 = 0,9 (90%)
-- Per lo stato "Inattivo": 100/1000 = 0,1 (10%)
-
-In questo esempio, la selectivity per lo stato "Attivo" è più alta rispetto allo stato "Inattivo". Ciò significa che l'indice sarà più selettivo per lo stato "Attivo" e potrà essere utilizzato in modo più efficiente per recuperare i record corrispondenti a tale valore.
-
-La selectivity index diventa particolarmente importante quando si scrivono query complesse con più condizioni di ricerca. Se una query contiene una condizione che coinvolge una colonna indicizzata con una selectivity bassa, il database potrebbe scegliere di non utilizzare l'indice perché potrebbe essere più efficiente effettuare una scansione completa della tabella.
-
-In conclusione, la selectivity index in SQL rappresenta la distribuzione dei valori unici all'interno di una colonna indicizzata e influisce sulle prestazioni delle query. Un'alta selectivity indica una maggiore selettività dell'indice per un valore specifico, mentre una bassa selectivity indica una minore selettività.
 
 
 
