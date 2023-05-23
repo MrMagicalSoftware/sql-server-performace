@@ -1724,6 +1724,99 @@ SELECT
 
 
 
+![Schermata del 2023-05-23 17-39-12](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/ddc806be-6f55-4454-9957-37615f2c38b0)
+
+
+
+![Schermata del 2023-05-23 17-41-40](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/0bff280e-e670-4712-a27a-f558a7e0211e)
+
+
+![Schermata del 2023-05-23 17-42-20](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/6b9a68fd-f364-451f-9a82-e3b12d712bc7)
+
+
+## FINDING THE SLOWEST , MOST EXPENSIVE SQL STATEMENTS.
+
+
+
+
+
+
+![Schermata del 2023-05-23 17-46-16](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/69252aa3-3fa1-4621-b21b-93801983fb63)
+
+
+
+
+
+
+
+
+```
+-- Finding the most expensive statements in your database
+-- ------------------------------------------------------------------------------------------------
+SELECT TOP 20    
+        DatabaseName = DB_NAME(CONVERT(int, epa.value)), 
+        [Execution count] = qs.execution_count,
+        [CpuPerExecution] = total_worker_time / qs.execution_count ,
+        [TotalCPU] = total_worker_time,
+        [IOPerExecution] = (total_logical_reads + total_logical_writes) / qs.execution_count ,
+        [TotalIO] = (total_logical_reads + total_logical_writes) ,
+        [AverageElapsedTime] = total_elapsed_time / qs.execution_count,
+        [AverageTimeBlocked] = (total_elapsed_time - total_worker_time) / qs.execution_count,
+     [AverageRowsReturned] = total_rows / qs.execution_count,    
+     [Query Text] = SUBSTRING(qt.text,qs.statement_start_offset/2 +1, 
+            (CASE WHEN qs.statement_end_offset = -1 
+                THEN LEN(CONVERT(nvarchar(max), qt.text)) * 2 
+                ELSE qs.statement_end_offset end - qs.statement_start_offset)
+            /2),
+        [Parent Query] = qt.text,
+        [Execution Plan] = p.query_plan,
+     [Creation Time] = qs.creation_time,
+     [Last Execution Time] = qs.last_execution_time   
+    FROM sys.dm_exec_query_stats qs
+    CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) as qt
+    OUTER APPLY sys.dm_exec_query_plan(qs.plan_handle) p
+    OUTER APPLY sys.dm_exec_plan_attributes(plan_handle) AS epa
+    WHERE epa.attribute = 'dbid'
+        AND epa.value = db_id()
+    ORDER BY [AverageElapsedTime] DESC; --Other column aliases can be used
+   ``` 
+    
+    
+    
+    ```
+-- ------------------------------------------------------------------------------------------------
+SELECT TOP 20    
+        DatabaseName = DB_NAME(CONVERT(int, epa.value)), 
+        [Execution count] = qs.execution_count,
+        [CpuPerExecution] = total_worker_time / qs.execution_count ,
+        [TotalCPU] = total_worker_time,
+        [IOPerExecution] = (total_logical_reads + total_logical_writes) / qs.execution_count ,
+        [TotalIO] = (total_logical_reads + total_logical_writes) ,
+        [AverageElapsedTime] = total_elapsed_time / qs.execution_count,
+        [AverageTimeBlocked] = (total_elapsed_time - total_worker_time) / qs.execution_count,
+     [AverageRowsReturned] = total_rows / qs.execution_count,    
+     [Query Text] = SUBSTRING(qt.text,qs.statement_start_offset/2 +1, 
+            (CASE WHEN qs.statement_end_offset = -1 
+                THEN LEN(CONVERT(nvarchar(max), qt.text)) * 2 
+                ELSE qs.statement_end_offset end - qs.statement_start_offset)
+            /2),
+        [Parent Query] = qt.text,
+        [Execution Plan] = p.query_plan,
+     [Creation Time] = qs.creation_time,
+     [Last Execution Time] = qs.last_execution_time   
+    FROM sys.dm_exec_query_stats qs
+    CROSS APPLY sys.dm_exec_sql_text(qs.sql_handle) as qt
+    OUTER APPLY sys.dm_exec_query_plan(qs.plan_handle) p
+    OUTER APPLY sys.dm_exec_plan_attributes(plan_handle) AS epa
+    WHERE epa.attribute = 'dbid'
+        AND epa.value = db_id()
+    ORDER BY [AverageElapsedTime] DESC; --Other column aliases can be used
+
+
+```
+
+
+
 
 
 
