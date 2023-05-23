@@ -906,12 +906,40 @@ another tree structure called a cluster index.
 ![Schermata del 2023-05-23 10-08-49](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/9f05ecff-4e64-4893-8b6f-17949703639a)
 
 
-So if index is selective we will only find a few matching values in the index that we have to look up in the table, so we are doing a small number of i/o operations overall but what if our index isn't very selective, what if for the index key we lookp we get back several thousand matches, well then we are going to have come over to the table and look up each and every one of those rows, so that is several thousand times, we are going to have  to look up data in this table and since our data is probably randomly distributed throughout the table, we are going to end up reading most if not all the pages in the table anyway , so in this case it is actually more efficient for sql server not to use the index
-
+So if index is selective we will only find a few matching values in the index that we have to look up in the table, so we are doing a small number of i/o operations overall but what if our index isn't very selective, what if for the index key we lookp we get back several thousand matches, well then we are going to have come over to the table and look up each and every one of those rows, so that is several thousand times, we are going to have  to look up data in this table and since our data is probably randomly distributed throughout the table, we are going to end up reading most if not all the pages in the table anyway , so in this case it is actually more efficient for sql server not to use the index and just the entire table.
 
 1.25.48
 
 > https://mode.com/sql-tutorial/sql-window-functions/
+
+
+________________________________________________
+
+
+La selectivity indica la percentuale di righe che verranno restituite in una query in base ai predicati specificati. Più alta è la selectivity, meno righe saranno restituite e più la query sarà efficiente.
+
+Ad esempio, supponiamo di avere una tabella "clienti" con un milione di righe e una colonna "sesso" con due possibili valori: "M" o "F". Se vogliamo eseguire una query per trovare tutti i clienti di sesso femminile, la selectivity sarebbe del 50% perché esiste una probabilità del 50% che la riga abbia il valore "F" nella colonna "sesso". Questo significa che la query potrebbe restituire fino a 500.000 righe.
+
+La selectivity può essere utilizzata anche con gli operatori di confronto come "=", ">", "<", ">=", "<=". Ad esempio, se vogliamo trovare tutti i clienti con età maggiore di 18 anni, la selectivity sarebbe molto alta, poiché solo una piccola percentuale delle righe avrà un valore di età maggiore di 18 anni.
+
+In sintesi, la selectivity ci aiuta a determinare la quantità di dati che una query dovrà elaborare e quindi a progettare query più efficienti.
+
+
+________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
