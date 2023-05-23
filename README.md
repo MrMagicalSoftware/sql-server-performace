@@ -1870,6 +1870,8 @@ ________________________________________________________________________________
 
 
 
+
+```
 -- Getting Stats on What Indexes are Used and What Indexes are Not
 -- ------------------------------------------------------------------------------------------------
 SELECT
@@ -1891,7 +1893,7 @@ LEFT OUTER JOIN sys.dm_db_index_usage_stats s
 WHERE 
     (OBJECTPROPERTY(i.object_id, 'IsMsShipped') = 0)
 ORDER BY [TableName], [IndexName];
-
+```
 
 
 
