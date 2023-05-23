@@ -1365,7 +1365,172 @@ Il motore di database può utilizzare l'indice creato per ottenere i valori di "
 ![Schermata del 2023-05-23 16-00-36](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/ac839c9b-5b75-462c-8fed-8bab06688314)
 
 
+Un "covering index" (indice di copertura) in SQL Server si riferisce a un tipo di indice che è progettato per coprire completamente una query senza dover accedere alla tabella di base. In altre parole, un covering index include tutte le colonne richieste dalla query, consentendo al motore di database di soddisfare la query utilizzando solo l'indice, senza dover eseguire un'ulteriore ricerca nella tabella.
+
+L'utilizzo di un covering index può portare a notevoli miglioramenti delle prestazioni delle query, poiché riduce il numero di letture dei dati necessarie per soddisfare una query. Invece di dover accedere alla tabella per recuperare i dati mancanti, il motore di database può utilizzare l'indice di copertura per recuperare tutte le colonne richieste.
+
+Per creare un covering index, è necessario includere tutte le colonne richieste dalla query nell'indice stesso. Di solito, l'ordine delle colonne nell'indice corrisponde all'ordine in cui vengono richieste nella query per massimizzare l'efficacia del covering index.
+
+Ecco un esempio di creazione di un covering index:
+
+Supponiamo di avere una tabella chiamata "Products" con le seguenti colonne:
+
+- ProductID (colonna chiave)
+- CategoryID
+- ProductName
+- UnitPrice
+- QuantityInStock
+
+Vogliamo creare un covering index per una query che richiede il nome del prodotto, il prezzo unitario e la quantità in stock:
+
+```
+CREATE NONCLUSTERED INDEX IX_CoveringIndex
+ON Products (ProductName, UnitPrice, QuantityInStock);
+```
+
+Con questo covering index, la query che richiede il nome del prodotto, il prezzo unitario e la quantità in stock può essere soddisfatta utilizzando solo l'indice, senza accedere alla tabella di base. Ciò porta a un'ottimizzazione delle prestazioni poiché il motore di database può evitare le letture aggiuntive dei dati dalla tabella.
+
+Tuttavia, è importante considerare che la creazione di un covering index può aumentare la dimensione dell'indice, quindi è necessario valutare attentamente le colonne da includere per garantire un bilanciamento tra le prestazioni delle query e l'utilizzo dello spazio su disco.
+
+![Schermata del 2023-05-23 16-03-24](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/e7b36e47-b268-4ad5-83d3-dc5ee1467d29)
+
+
+Vediamo un esempio
+
+>Nota non uso * , la vado a specificare tutte le colonne nella select 
+![Schermata del 2023-05-23 16-04-38](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/12841153-0e53-41ce-aa9c-932de3d98206)
+
+
+
+![Schermata del 2023-05-23 16-06-24](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/df6afd93-82f8-4d38-8274-5722809e356c)
+
+Vediamo che non è persente nessuna operazione di lookup..!quindi ok!
+Ho Index SEEK OPERATION ma non KEY LOOK OPERATION ,
+perchè in questo caso abbiamo tutti i dati che ci servono..
+
+
+Se aggiungo anche solo una colonna che non abbiamo elencato nell'indice
+sql server eseguirà l'operazione di lookup sulla tabella
+
+
+Se ad esempio aggiungo la colonna telephone.
+
+
+![Schermata del 2023-05-23 16-09-26](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/c917eade-7afb-48ff-88fe-3af216487223)
+
+Ora guardo il piano di esecuzione :
+
+
+![Schermata del 2023-05-23 16-09-51](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b89daf68-a80f-495c-8392-730f82743469)
+
+Ho in questo caso un'operazione di lookup,devo recuperare telephone.
+>Devo cercare di evitare le LOOKUP OPERATIONS 
+
+
+
+> NOTA GENERALE
+
+
+![Schermata del 2023-05-23 16-13-08](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/3ccf6e70-62c2-48db-8e39-377f187867f3)
+
 ____________________________________________________________________________________________________________
+
+
+
+## OVER-INDEXING
+
+Abbiamo visto che in generale gli indici danno uno speed maggiore alle nostre query e si riduce il numero di risorse necessario per eseguire il nostro task.
+
+Quindi creiamo un indice su tutte le colonne ?
+
+
+![Schermata del 2023-05-23 16-17-39](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/6fb4ea55-1aca-403b-b174-a143312f8375)
+
+
+
+![Schermata del 2023-05-23 16-18-22](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/5625020a-4891-4cfa-827e-bf5b53a57920)
+
+
+OVER INDEX => CREARE INDICI CHE NON VENGONO MAI UTILIZZATI IN NESSUN STATEMENTS
+
+
+Quando creamo un indice sql crea una struttura fisica separata che contiene i dati per l'indice.
+Quando eseguiamo delle OPERAZIONE DI DML ( DATA - MANIPULATION  ) sulla tabella,sql deve tenere in modo sincrono aggiornato tutti gli indici.
+
+
+![Schermata del 2023-05-23 16-22-19](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/01fb006c-4337-44d0-a7f1-b18ba7bfd9f5)
+
+
+![Schermata del 2023-05-23 16-22-49](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/201bb8b9-af5b-4b59-a586-2c08453871de)
+
+Quindi per ogni tabella devo andare a sincronizzare tutte le entry...
+
+
+CONCETTO DEL TRADE -OFF
+
+
+
+
+![Schermata del 2023-05-23 16-26-11](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/393f1bea-9ba0-492d-9e48-e9c76905c0f2)
+
+
+COME FACCIO A SAPERE SE NE VALE LA PENA ??
+
+
+
+![Schermata del 2023-05-23 16-27-14](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/5032bd67-6676-4dda-b6af-38526c045eaf)
+
+
+
+
+To find unused indexes using DMVs (Dynamic Management Views) in SQL Server, you can query the `sys.dm_db_index_usage_stats` view. This view provides information about index usage in the database. Unused indexes are those that have never been accessed or have not been accessed since the last server restart.
+
+Here's an example query to identify unused indexes:
+
+```sql
+SELECT 
+    OBJECT_NAME(s.[object_id]) AS TableName,
+    i.name AS IndexName,
+    i.type_desc AS IndexType
+FROM 
+    sys.indexes AS i
+INNER JOIN 
+    sys.dm_db_index_usage_stats AS s ON i.[object_id] = s.[object_id] AND i.index_id = s.index_id
+WHERE 
+    OBJECTPROPERTY(i.[object_id],'IsUserTable') = 1
+    AND s.database_id = DB_ID()
+    AND (s.user_seeks = 0 AND s.user_scans = 0 AND s.user_lookups = 0)
+    AND s.user_updates > 0
+```
+
+Let's break down the query:
+
+- The `sys.indexes` view provides information about indexes in the database.
+- The `sys.dm_db_index_usage_stats` view provides index usage statistics.
+- We join these two views using the `[object_id]` and `index_id` columns.
+- We filter the result by user tables (`IsUserTable = 1`) and the current database (`database_id = DB_ID()`).
+- The conditions `(user_seeks = 0 AND user_scans = 0 AND user_lookups = 0)` identify indexes that have not been used for seeks, scans, or lookups.
+- The condition `user_updates > 0` ensures that the index has been updated (modified) at least once.
+
+This query will return the names of the tables, the indexes, and their types for all unused indexes in the current database. You can further customize the query to include additional information or filter the results based on your specific requirements.
+
+
+______________________________________________________________________________
+
+
+
+
+## INTERPRETING SQL SERVER INDEX 
+
+
+
+
+
+
+
+
+
+
 
 
 
