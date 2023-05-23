@@ -895,7 +895,7 @@ Per creare un indice in maniera corretta devo pensare a come i dati saranno rice
 ![Schermata del 2023-05-17 20-00-40](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b89f5afd-7d93-4a29-b3bb-c235c523ca1f)
 
 
-The second factor that governs how effective an index will be is the selectivity of the index, and selectivity is simply a way of saying , how many or, or how flew rows there are in the table for each key value in the index.
+The second factor that governs how effective an index will be is the selectivity of the index, and selectivity is simply a way of saying , how many , or how flew rows there are in the table for each key value in the index.
 for our indexes to be used by sql server adn to be effective at speeding up the performance we want our indexes to be as selectivite as possible, that is each value of the index key should only correspond to few rows in a table or perhaps even only one row let's see why this matters.
 
 We know that when sql server uses ad index it traverses the tree structure of the index to finding the matching key in the index, when it finds the matching or keys it will read from the index , the value of the row identifiers for the rows that matches those index keys.
@@ -906,7 +906,7 @@ another tree structure called a cluster index.
 ![Schermata del 2023-05-23 10-08-49](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/9f05ecff-4e64-4893-8b6f-17949703639a)
 
 
-So if index is selective we will only find a few matching values in the index that we have to look up in the table, so we are doing a small number of i/o operations overall but what if our index isn't very selective, what if for the index key we lookp we get back several thousand matches, well then we are going to have come over to the table and look up each and every one of those rows, so that is several thousand times, we are going to have  to look up data in this table and since our data is probably randomly distributed throughout the table, we are going to end up reading most if not all the pages in the table anyway 
+So if index is selective we will only find a few matching values in the index that we have to look up in the table, so we are doing a small number of i/o operations overall but what if our index isn't very selective, what if for the index key we lookp we get back several thousand matches, well then we are going to have come over to the table and look up each and every one of those rows, so that is several thousand times, we are going to have  to look up data in this table and since our data is probably randomly distributed throughout the table, we are going to end up reading most if not all the pages in the table anyway , so in this 
 
 
 
