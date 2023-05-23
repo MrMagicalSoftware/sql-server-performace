@@ -1896,7 +1896,20 @@ ORDER BY [TableName], [IndexName];
 ```
 
 
+questa query restituirà informazioni dettagliate sugli indici presenti nel database SQL Server, inclusi il numero di ricerche, scansioni, ricerche di righe e aggiornamenti eseguiti sugli indici da parte degli utenti.
 
+
+1. La clausola `SELECT` viene utilizzata per specificare quali colonne verranno restituite nella query. Viene definita una serie di colonne, tra cui il nome del database (`DatabaseName`), il nome della tabella (`TableName`), il nome dell'indice (`IndexName`), il tipo di indice (`IndexType`), il totale dell'utilizzo dell'indice (`TotalUsage`), il numero di ricerche dell'utente (`UserSeeks`), il numero di scansioni dell'utente (`UserScans`), il numero di ricerche dell'utente (`UserLookups`) e il numero di aggiornamenti dell'utente (`UserUpdates`).
+
+2. La clausola `FROM` specifica la tabella di cui si desidera ottenere le informazioni sugli indici. In questo caso, viene utilizzata la vista di sistema `sys.indexes` per ottenere le informazioni sugli indici.
+
+3. La clausola `INNER JOIN` viene utilizzata per combinare la tabella degli indici con la tabella degli oggetti (`sys.objects`) utilizzando la colonna `object_id`.
+
+4. La clausola `LEFT OUTER JOIN` viene utilizzata per combinare la tabella degli indici con la vista di sistema `sys.dm_db_index_usage_stats`, che fornisce informazioni sull'utilizzo degli indici. Viene effettuato un join sugli identificatori dell'oggetto e dell'indice.
+
+5. La clausola `WHERE` viene utilizzata per filtrare i risultati in base a determinate condizioni. In questo caso, viene verificato se l'indice non è un indice di sistema (`IsMsShipped = 0`).
+
+6. La clausola `ORDER BY` viene utilizzata per ordinare i risultati in base a determinate colonne. In questo caso, i risultati vengono ordinati per nome della tabella (`TableName`) e nome dell'indice (`IndexName`).
 
 
 
