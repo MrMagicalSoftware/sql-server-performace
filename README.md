@@ -1575,6 +1575,71 @@ ________________________________________________________________________________
 ![Schermata del 2023-05-23 17-14-20](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/72fcfbb2-ca98-4bd2-ad90-df1c594e6edd)
 
 
+SQL CI FORNISCE TUTTE LE STATISTICHE DI TUTTI GLI STATEMENTS CHE HA ESEGUITO NEL NOSTRO DATABASE
+(quanto tempo ci impiega uan query ad essere eseguita , cpu , i/0) 
+usiamo questi dati per la diagnostica.
+
+
+
+![Schermata del 2023-05-23 17-17-18](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/fc1fd795-b46d-4fa4-944b-6bc0fb3c8e33)
+
+IDENTIFICHIAMO QUALE APPLICATIVO (QUERY) FUNZIONA BENE E QUALE NO
+
+UTILIZZO DYNAMIC MANAGEMENT VIEWS (DMVS)
+
+
+https://learn.microsoft.com/en-us/sql/relational-databases/system-dynamic-management-views/system-dynamic-management-views?view=sql-server-ver16
+
+
+
+![Schermata del 2023-05-23 17-21-41](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/4c47e260-1f81-4ed2-8c9d-a701a1264f49)
+
+__________________________________________________________________________________
+
+
+![Schermata del 2023-05-23 17-25-30](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/1ea5635c-2591-4f70-96ae-b92b249187f3)
+
+
+![Schermata del 2023-05-23 17-26-43](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/127ae020-30b0-4be1-8cba-7c9c734ed122)
+
+
+https://learn.microsoft.com/en-us/analysis-services/instances/use-dynamic-management-views-dmvs-to-monitor-analysis-services?view=asallproducts-allversions
+
+
+-- Finding Connection to Your Database
+-- ------------------------------------------------------------------------------------------------
+SELECT
+    database_id,    -- SQL Server 2012 and after only
+    session_id,
+    status,
+    login_time,
+    cpu_time,
+    memory_usage,
+    reads,
+    writes,
+    logical_reads,
+    host_name,
+    program_name,
+    host_process_id,
+    client_interface_name,
+    login_name as database_login_name,
+    last_request_start_time
+FROM sys.dm_exec_sessions
+WHERE is_user_process = 1
+ORDER BY cpu_time DESC;
+
+
+
+![Schermata del 2023-05-23 17-29-48](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/76f82959-53c1-4da0-8337-8ff0e91ba4a9)
+
+
+
+Lato programmazione conviene tenere traccia della mia app :
+
+
+![Schermata del 2023-05-23 17-31-50](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/bd96b4a4-f93d-40fd-8b98-ec7f7ef2f2b6)
+
+![Schermata del 2023-05-23 17-31-36](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/edcdf6b1-44ae-46f8-a8d7-c1c0b16c0e2a)
 
 
 
@@ -1583,6 +1648,20 @@ ________________________________________________________________________________
 
 
 
+
+-- Count of Connections by Login Name/Process (i.e. how many connections does an app have open)
+-- ------------------------------------------------------------------------------------------------
+SELECT
+    login_name,
+    host_name,
+    host_process_id,
+    COUNT(1) As LoginCount
+FROM sys.dm_exec_sessions
+WHERE is_user_process = 1
+GROUP BY
+    login_name,
+    host_name,
+    host_process_id;
 
 
 
