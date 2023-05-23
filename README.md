@@ -1208,6 +1208,11 @@ sfruttare al meglio le potenzialità degli indici.
 
 
 
+## How FUNCTIONS IN THE WHERE CLAUSE AFFECT INDEXES
+
+
+
+
 
 
 
