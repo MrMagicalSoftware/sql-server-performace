@@ -933,12 +933,56 @@ Ad esempio, supponiamo di avere una tabella "clienti" con un milione di righe e 
 
 La selectivity può essere utilizzata anche con gli operatori di confronto come "=", ">", "<", ">=", "<=". Ad esempio, se vogliamo trovare tutti i clienti con età maggiore di 18 anni, la selectivity sarebbe molto alta, poiché solo una piccola percentuale delle righe avrà un valore di età maggiore di 18 anni.
 
-In sintesi, la selectivity ci aiuta a determinare la quantità di dati che una query dovrà elaborare e quindi a progettare query più efficienti.
+la selectivity ci aiuta a determinare la quantità di dati che una query dovrà elaborare e quindi a progettare query più efficienti.
 
 
 ________________________________________________
 
 
+Per comprendere il concetto di "selectivity index" in SQL, è utile comprendere prima l'indice stesso e poi la sua selectivity.
+
+In SQL, un indice è una struttura di dati che viene creata su una o più colonne di una tabella per migliorare le prestazioni delle query. L'indice consente al database di recuperare più rapidamente i dati desiderati, fornendo un percorso di accesso più efficiente.
+
+La selectivity, o selettività, si riferisce alla distinzione e alla distribuzione dei valori unici all'interno di una colonna indicizzata. Indica quanto un valore specifico in una colonna sia selettivo, cioè quanti record corrispondono a quel valore rispetto al totale dei record nella tabella.
+
+Supponiamo di avere una tabella chiamata "Utenti" con una colonna "Stato" che può contenere i valori "Attivo" o "Inattivo". Abbiamo anche creato un indice sulla colonna "Stato" per migliorare le prestazioni delle query.
+
+Se nella tabella "Utenti" ci sono 1000 record, di cui 900 hanno lo stato "Attivo" e 100 hanno lo stato "Inattivo", la selectivity dell'indice sulla colonna "Stato" sarà:
+
+- Per lo stato "Attivo": 900/1000 = 0,9 (90%)
+- Per lo stato "Inattivo": 100/1000 = 0,1 (10%)
+
+In questo esempio, la selectivity per lo stato "Attivo" è più alta rispetto allo stato "Inattivo". Ciò significa che l'indice sarà più selettivo per lo stato "Attivo" e potrà essere utilizzato in modo più efficiente per recuperare i record corrispondenti a tale valore.
+
+La selectivity index diventa particolarmente importante quando si scrivono query complesse con più condizioni di ricerca. Se una query contiene una condizione che coinvolge una colonna indicizzata con una selectivity bassa, il database potrebbe scegliere di non utilizzare l'indice perché potrebbe essere più efficiente effettuare una scansione completa della tabella.
+
+In conclusione, la selectivity index in SQL rappresenta la distribuzione dei valori unici all'interno di una colonna indicizzata e influisce sulle prestazioni delle query. Un'alta selectivity indica una maggiore selettività dell'indice per un valore specifico, mentre una bassa selectivity indica una minore selettività.
+
+
+
+
+
+
+______________________________________________________________________________________________________
+
+
+
+Una selectivity index elevata significa che l'indice può identificare rapidamente un sottoinsieme ristretto di righe corrispondenti ai criteri di ricerca, mentre una selectivity index bassa indica che l'indice potrebbe non essere molto efficace nel ridurre il numero di righe esaminate.
+
+Per comprendere meglio, ecco un esempio:
+
+Supponiamo di avere una tabella "Prodotti" con le seguenti colonne: "ID" (univoco per ogni prodotto), "Nome" e "Prezzo". Immaginiamo di creare un indice sulla colonna "Prezzo".
+
+Se eseguiamo una query come "SELECT * FROM Prodotti WHERE Prezzo = 50", la selectivity index dell'indice ci dirà quanto velocemente l'indice può individuare le righe con un prezzo di 50. Se solo una piccola percentuale dei prodotti ha un prezzo di 50, allora l'indice avrà una selectivity index elevata. Ciò significa che l'indice ridurrà drasticamente il numero di righe da esaminare per trovare le corrispondenze desiderate.
+
+D'altra parte, se eseguiamo una query come "SELECT * FROM Prodotti WHERE Prezzo = 10", ma la maggior parte dei prodotti ha un prezzo di 10, l'indice avrà una selectivity index bassa. In questo caso, l'indice non sarà molto utile nel ridurre il numero di righe esaminate e potrebbe richiedere più tempo per eseguire la query.
+
+In generale, una selectivity index elevata è desiderabile perché consente di recuperare rapidamente i dati desiderati, migliorando le prestazioni delle query. Gli indici vengono progettati in base alla distribuzione dei dati nella tabella e alle query che verranno eseguite per ottimizzare la selectivity index e migliorare le prestazioni complessive del sistema di database.
+
+
+
+
+_________________________________________________________________________________
 
 
 
@@ -949,7 +993,123 @@ ________________________________________________
 
 
 
+**Example of selectivity**
 
+```
+CREATE INDEX IX_Students_LastNameFirstName
+ON Students (LastName , FirstName);
+
+SELECT * FROM Students where LastName='Baker' AND FirstName ='Charles';
+
+```
+
+Alcune statistiche legate alla tabella studente.
+
+Total Rows : 1,20,000
+Unique Rows ( in termini di combinazioni lastname , firstname) 1,07,000
+
+
+Qusti ratio ci forniscono una buona indicazione sugli indici.
+
+Come possiamo fare dal piano di esecuzione sql server svolge una **INDEX SEEK OPERATION**
+
+
+
+![Schermata del 2023-05-23 11-11-53](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/5060b9ee-de51-49e0-9376-e8fff68f7267)
+
+
+
+![Schermata del 2023-05-23 11-12-55](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/9fa3ea84-1dd7-41b5-a039-2b0934a35b8d)
+
+I calcoli che svolgi all'interno sono più complessi rispetto al nostro semplice ratio
+
+
+Vediamo un esempio di bassa selettività dell'index.
+
+
+```
+CREATE INDEX IX_Students_state
+ON Students( State);
+
+SELECT * FROM Students
+WHERE State ='WI' AND City='Appleton';
+
+```
+Ho circa 52 stati distinti WI,CM,AL,... ....
+
+SQL non usa l'indice perchè quando si fa le statistiche ritorna una serie di dati indietro.
+L'indece non è di aiuto
+
+![Schermata del 2023-05-23 11-32-13](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/f52305aa-afe7-4704-af97-b323d18dd7d0)
+
+
+Se volgio forzare d utilizzare l'indice, cosa che non dovrei fare perchè l'ottimizzatore di sql è molto efficiente, posso utilizzare questo comando.
+
+
+```
+
+SELECT * FROM Students WITH (Index(IX_Students_State))
+WHERE State ='WI' AND City='Appleton';
+```
+
+ora vedo che sta utilizzando l'indice 
+
+
+![Schermata del 2023-05-23 11-36-21](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/f78c7f33-d88c-4041-a63c-22c62279649b)
+
+
+![Schermata del 2023-05-23 11-38-33](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/7378f5ef-3df0-4bc1-b5d0-b1997b4993d2)
+
+
+Quindi abbiamo visto che è meglio lasciare fare all'ottimizzare.
+
+![Schermata del 2023-05-23 11-40-02](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b60728ca-2719-4c5c-9832-5750202f0ba1)
+
+Forzando sql server a usare l'indice è molto piu' costoso, rispetto a leggere tutta la tabella per intero
+
+
+>Nota : QUANDO CREAIAMO UN INDICE POSSIAMO PENSARE CHE L'INDICE AUMENTI LE PERFORMANCE , MA NON E' SEMPRE COSI'
+>PERCHÈ SQL MAGARI NON USA NEANCHE L'INDICE 
+
+
+In questo caso sql server compie la decisione corretta di NON USARE INDEX, perchè usando l'indice si ha maggiore dispersione e questo è legato alla **selectivity**.
+
+
+Quindi doppiamo rendere il nostro indice più selettivo 
+
+
+```
+DROP INDEX IX_Students_state
+ON Students( State);
+
+
+CREATE INDEX IX_Students_stateCity
+ON Students( State, City);
+
+
+SELECT * FROM Students 
+WHERE State ='WI' AND City='Appleton';
+
+```
+
+Con questa maggiore selettività sql server è in grado di usare l'indice
+Vedo INDEX SEEK OPERATION
+
+
+![Schermata del 2023-05-23 11-50-26](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/125ddb54-01e9-42ee-8834-94f01e2f5578)
+
+
+
+
+![Schermata del 2023-05-23 11-51-38](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/cfa20b2e-87f5-4bf4-979b-bee12f6474f6)
+
+
+**REGOLA GENERALE**
+
+>QUANDO HO UNA COLONNA CHE DA SOLA NON E' ABBASTANZA SELETTIVA, LA USO IN COMBINATA CON ALTRE COLONNE NEL NOSTRO INDICE E CONTROLLO LA SELECTIVITY
+
+
+_________________________________________________________________
 
 
 
