@@ -1917,6 +1917,7 @@ ________________________________________________________________________________
 
 
 
+#Capturing Trace Logs of Application from SQL Server
 
 
 
