@@ -969,11 +969,6 @@ Selectivity = 121305/12137
 ________________________________________________
 
 
-La selectivity indica la percentuale di righe che verranno restituite in una query in base ai predicati specificati. Più alta è la selectivity, meno righe saranno restituite e più la query sarà efficiente.
-
-Ad esempio, supponiamo di avere una tabella "clienti" con un milione di righe e una colonna "sesso" con due possibili valori: "M" o "F". Se vogliamo eseguire una query per trovare tutti i clienti di sesso femminile, la selectivity sarebbe del 50% perché esiste una probabilità del 50% che la riga abbia il valore "F" nella colonna "sesso". Questo significa che la query potrebbe restituire fino a 500.000 righe.
-
-La selectivity può essere utilizzata anche con gli operatori di confronto come "=", ">", "<", ">=", "<=". Ad esempio, se vogliamo trovare tutti i clienti con età maggiore di 18 anni, la selectivity sarebbe molto alta, poiché solo una piccola percentuale delle righe avrà un valore di età maggiore di 18 anni.
 
 la selectivity ci aiuta a determinare la quantità di dati che una query dovrà elaborare e quindi a progettare query più efficienti.
 
