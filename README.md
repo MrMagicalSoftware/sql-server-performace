@@ -1362,6 +1362,7 @@ WHERE CustomerID = '12345';
 Il motore di database può utilizzare l'indice creato per ottenere i valori di "OrderDate" e "TotalAmount" direttamente dall'indice stesso, senza dover accedere alla tabella di base. Ciò può migliorare le prestazioni dell'esecuzione della query.
 
 
+![Schermata del 2023-05-23 16-00-36](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/ac839c9b-5b75-462c-8fed-8bab06688314)
 
 
 ____________________________________________________________________________________________________________
