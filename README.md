@@ -1913,3 +1913,28 @@ questa query restituirà informazioni dettagliate sugli indici presenti nel data
 
 
 
+________________________________________________________________________________________________________________
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
