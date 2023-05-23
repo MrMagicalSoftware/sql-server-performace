@@ -907,8 +907,16 @@ another tree structure called a cluster index.
 
 
 So if index is selective we will only find a few matching values in the index that we have to look up in the table, so we are doing a small number of i/o operations overall but what if our index isn't very selective, what if for the index key we lookp we get back several thousand matches, well then we are going to have come over to the table and look up each and every one of those rows, so that is several thousand times, we are going to have  to look up data in this table and since our data is probably randomly distributed throughout the table, we are going to end up reading most if not all the pages in the table anyway , so in this case it is actually more efficient for sql server not to use the index and just the entire table anyway.
+This way sql server doesn't have incur the i/o of reading the index, because the index isn't really helpuf in terms of narrowing down what data sql server needs to find.
 
-1.25.48
+![Schermata del 2023-05-23 10-51-16](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/2bb97e0e-c905-4daf-a88a-8455ff8afc07)
+
+
+![Schermata del 2023-05-23 10-56-39](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/609f47d1-98af-4495-88af-6fcd8589fc6f)
+
+When we say that we want our **indexes to be selective** , we are saying that we want them to really help sql server target exactily where the data is that we need to find, and to do that we want out indexes to have a high number of unique key values compared to the total number of rows in the table
+
+
 
 > https://mode.com/sql-tutorial/sql-window-functions/
 
