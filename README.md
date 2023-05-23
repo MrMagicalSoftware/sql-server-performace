@@ -1527,10 +1527,12 @@ ______________________________________________________________________________
 
 
 
+![Schermata del 2023-05-23 17-02-33](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/318ffc6f-1fc1-45f6-87f3-10a902a6398c)
 
 
 
 
+![Schermata del 2023-05-23 17-03-24](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/d6eca541-0e97-4695-9aa5-55e14936569c)
 
 
 
