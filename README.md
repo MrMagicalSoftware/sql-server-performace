@@ -921,7 +921,49 @@ This way sql server doesn't have incur the i/o of reading the index, because the
 When we say that we want our **indexes to be selective** , we are saying that we want them to really help sql server target exactily where the data is that we need to find, and to do that we want out indexes to have a high number of unique key values compared to the total number of rows in the table
 
 
+Selectivity can be stated to be the “measure of uniqueness” or “the number of rows matching the predicate divided by the total number of rows.”
 
+Selectivity = No. of rows matching the predicate/Total number of rows
+
+
+```
+USE AdventureWorks2014
+GO
+SELECT COUNT(*) FROM Sales.SalesOrderDetail
+```
+
+There are 121317 rows in the table SalesOrderDetail.
+Now, a predicate is applied to filter all entries with an ID of 43659.
+
+
+
+```
+SELECT * FROM Sales.SalesOrderDetail
+WHERE SalesOrderID = 43659
+```
+
+The Status bar shows the result set having 12 records. Appling this to the formula we get the following result.
+
+Selectivity = 12/121317
+= 0.00009891
+
+
+It is to be noted that the number of records returned are very low, making the query highly Selective. A query is said to have ‘high Selectivity’ if low number of records are returned that matched the predicate, whereas a query is said to have ‘low Selectivity’ if a large number of records are returned.
+
+In order to understand low Selectivity, the previous query can be tweaked to display all entries that have an ID greater than 43659.
+
+
+```
+SELECT * FROM Sales.SalesOrderDetail
+WHERE SalesOrderID > 43659
+```
+
+This query returns a result set containing 121305 rows. Applying this value in the formula, we get the following.
+
+Selectivity = 121305/12137
+= 0.99990108
+
+>Un valore di selettività pari a 1 significa che vengono restituite tutte le righe della tabella. Una delle principali idee sbagliate su questo argomento, che deve essere chiarita, è che i dati non possono mai avere una selettività alta o bassa. È la query.
 
 
 ________________________________________________
