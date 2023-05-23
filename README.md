@@ -1292,6 +1292,41 @@ ________________________________________________________________________________
 
 ## INCLUDE COLUMNS AND COVERING INDEXES
 
+Prendiamo in esame questo statement che contiene la clausola include.
+
+
+```
+CREATE INDEX IX_Students_Email
+       ON Students (Email)
+       INCLUDE ( FirstName , LastName)
+      
+```
+
+![Schermata del 2023-05-23 15-49-10](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/e1a89af5-eb94-4f56-85ed-dff41aa66cf0)
+
+
+SINTASSI GENERICA 
+
+
+```
+CREATE NONCLUSTERED INDEX IX_IndexName
+ON TableName (KeyColumn)
+INCLUDE (IncludedColumn1, IncludedColumn2);
+```
+
+La clausola INCLUDE viene utilizzata per aggiungere colonne non chiave specificate nell'indice, consentendo al motore di database di includere i valori di queste colonne nella struttura dell'indice stesso. Ciò può migliorare le prestazioni delle query che richiedono solo le colonne incluse nell'indice, poiché i dati necessari possono essere trovati direttamente nell'indice senza dover accedere alla tabella di base.
+
+
+Viene creato un indice non clusterizzato chiamato "IX_IndexName" sulla tabella "TableName". La colonna "KeyColumn" viene utilizzata come colonna chiave dell'indice, mentre le colonne "IncludedColumn1" e "IncludedColumn2" vengono incluse nell'indice per migliorare le prestazioni delle query che richiedono solo quelle colonne.
+
+È importante notare che l'utilizzo della clausola INCLUDE comporta un aumento della dimensione dell'indice, quindi è consigliabile utilizzarla solo per le colonne che sono effettivamente necessarie per le query. Inoltre, l'utilizzo di questa clausola è supportato solo negli indici non clusterizzati.
+
+
+
+![Schermata del 2023-05-23 15-53-49](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/8cb1ef79-e355-49a2-aed6-b465eba92e1d)
+
+
+
 
 
 
