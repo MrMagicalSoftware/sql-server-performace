@@ -895,6 +895,19 @@ Per creare un indice in maniera corretta devo pensare a come i dati saranno rice
 ![Schermata del 2023-05-17 20-00-40](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b89f5afd-7d93-4a29-b3bb-c235c523ca1f)
 
 
+The second factor that governs how effective an index will be is the selectivity of the index, and selectivity is simply a way of saying , how many or, or how flew rows there are in the table for each key value in the index.
+for our indexes to be used by sql server adn to be effective at speeding up the performance we want our indexes to be as selectivite as possible, that is each value of the index key should only correspond to few rows in a table or perhaps even only one row let's see why this matters.
+
+We know that when sql server uses ad index it traverses the tree structure of the index to finding the matching key in the index, when it finds the matching or keys it will read from the index , the value of the row identifiers for the rows that matches those index keys.
+
+In a typical tables this row identifiers are just the primary key values of the matching rows, then sql server takes this row identifier  and look up the actual rows in the table which as we have talked about is usually 
+another tree structure called a cluster index.
+
+![Schermata del 2023-05-23 10-08-49](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/9f05ecff-4e64-4893-8b6f-17949703639a)
+
+
+So if index is selective 
+
 
 
 
