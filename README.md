@@ -1162,6 +1162,51 @@ AND FirstName LIKE '%Thomas%'
 
 ```
 
+> NOTA SE USIAMO IL SIMBOLO % SQL NON SARA' IN GRADO DI USARE L'INDICE SULLA COLONNA
+>LA CHIAVE NEGLI INDICI SONO ORDINATE
+>AVENDO % SQL SERVER NON E' IN GRADO DI USARE LA LISTA ORDINATA 
+
+In qusto caso quello che ottengo è un'operazione di scan dell'intero indice o dell'intera tabella
+
+![Schermata del 2023-05-23 14-28-01](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/e7987df4-a363-49fe-949f-b1f3732ab013)
+
+Quando uso % si ha un impatto sella selettività dell'indice.
+caso diverso è se sposto la % 
+
+
+```
+SELECT * 
+FROM Applicants
+WHERE LastName LIKE 'HARRIES%'
+AND FirstName LIKE 'T%'
+```
+in questo caso uso il mio indice, perchè ho specificato un certo numero di caratteri su cui cercare
+
+
+![Schermata del 2023-05-23 14-33-25](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/952c02ca-a25f-4089-a7da-135d5a115d8e)
+
+se invece avessi :
+
+```
+SELECT * 
+FROM Applicants
+WHERE LastName LIKE 'HA%'
+AND FirstName LIKE 'T%'
+```
+
+![Schermata del 2023-05-23 14-34-39](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/f68c32ba-5bfe-4b24-890a-eb6870df6a7b)
+
+
+Non è in grado di usare l'indice e la ragione è perchè non gli abbiamo fornito abbastanza informazioni per poter fare in modo di utilizzare l'indice.**la nostra query non è abbastanza selettiva.**
+
+
+Cosa dovrei fare ?
+
+Nel form di ricerca dovrei forzare l'inserimento di un certo quantitativo di infomazione in modo tale da
+sfruttare al meglio le potenzialità degli indici.
+
+
+
 
 
 
