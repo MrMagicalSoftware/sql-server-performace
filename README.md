@@ -1211,6 +1211,100 @@ sfruttare al meglio le potenzialità degli indici.
 ## How FUNCTIONS IN THE WHERE CLAUSE AFFECT INDEXES
 
 
+```
+
+CREATE INDEX IX_APPLICATS_EMAIL
+ON Applicants(Email);
+
+select * 
+from applicants
+where substring(email, 0 , CHARINDEX('@',email,0)) = 'LouiseJSmith';
+
+```
+
+La funzione substring(email, 0, CHARINDEX('@',email,0)) viene utilizzata per estrarre una sottostringa dalla colonna "email". La funzione CHARINDEX('@',email,0) restituisce la posizione del simbolo "@" all'interno del valore della colonna "email". La funzione substring(email, 0, CHARINDEX('@',email,0)) quindi restituisce la sottostringa dalla posizione 0 fino alla posizione prima del simbolo "@", inclusa la posizione 0 ma escludendo la posizione del simbolo "@".
+
+La condizione substring(email, 0, CHARINDEX('@',email,0)) = 'LouiseJSmith' confronta questa sottostringa con il valore 'LouiseJSmith'. Quindi, la query selezionerà solo le righe in cui la parte iniziale dell'indirizzo email (prima del simbolo "@") corrisponde esattamente a 'LouiseJSmith'
+
+
+sql non è in grado di usare l'indice per le funzioni
+
+![Schermata del 2023-05-23 15-27-39](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/6e116166-9f8e-40d4-a323-ed90b788013b)
+
+
+
+![Schermata del 2023-05-23 15-28-40](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/f8268f77-435e-4969-838e-86b57dda7cbd)
+
+
+Possiamo notare dal piano di esecuzione che viene svolta SCAN e non una **seek operation**,
+questo perchè quello che è "ordinato" è email address non il valore computato dalla funzione.
+
+
+
+se voglio ottimizzare devo eseguire :
+
+```
+
+ALTER TABLE Applicants ADD EmailLocalPart As SUBSTRING(email , 0,CHARINDEX('@',email,0 ));
+
+```
+utilizzo la funzione di alter table per realizzare quella che è una **computed column**
+in questo passaggio ho la stessa formula delle funzioni che avevo usato un precedenza.
+posso ovviamente usare qualsiasi funzione.
+
+
+
+```
+select TOP 10 *
+FROM Applicants;
+```
+
+
+
+![Schermata del 2023-05-23 15-38-04](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/a880ab47-957f-434e-a7dd-0798d8c6efc3)
+
+Ora creaiamo un index su questa colonna :
+
+
+
+```
+CREATE INDEX IX_APPLICANTS_EMAIL_LOCALPART
+ON Applicants(EmailLocalPart)
+```
+
+Ora prendo nuovamente la query originale ed eseguo il PIANO DI ESECUZIONE:
+
+
+```
+select * 
+from applicants
+where substring(email, 0 , CHARINDEX('@',email,0)) = 'LouiseJSmith';
+```
+
+![Schermata del 2023-05-23 15-41-48](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/f3d4a2fe-a3a8-4848-b054-b9feb275b4a3)
+
+
+QUINDI FINALMENTE STO USANDO L'INDICE.
+
+______________________________________________________________________________________________________________
+
+
+
+## INCLUDE COLUMNS AND COVERING INDEXES
+
+
+
+
+
+
+
+
+
+
+____________________________________________________________________________________________________________
+
+
+
 
 
 
