@@ -1547,6 +1547,53 @@ ______________________________________________________________________________
 
 
 
+____________________________________________________________________________________
+
+
+RECALL CONCEPTS
+
+![Schermata del 2023-05-23 17-08-33](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/c0fe6688-5647-48a4-81d1-dab17f6f5401)
+
+
+![Schermata del 2023-05-23 17-10-18](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/6e7ad636-bfe8-4f3e-b90c-33ffa4f84c0d)
+
+
+![Schermata del 2023-05-23 17-11-06](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/fc9c4039-0184-4fb4-8f14-ee92bf61ca59)
+
+
+____________________________________________________________________________________________________
+
+
+
+
+#Finding Bottlenecks in SQL Server Performance
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
