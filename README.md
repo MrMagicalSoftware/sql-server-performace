@@ -1608,6 +1608,8 @@ https://learn.microsoft.com/en-us/analysis-services/instances/use-dynamic-manage
 
 -- Finding Connection to Your Database
 -- ------------------------------------------------------------------------------------------------
+
+```
 SELECT
     database_id,    -- SQL Server 2012 and after only
     session_id,
@@ -1627,7 +1629,7 @@ SELECT
 FROM sys.dm_exec_sessions
 WHERE is_user_process = 1
 ORDER BY cpu_time DESC;
-
+```
 
 
 ![Schermata del 2023-05-23 17-29-48](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/76f82959-53c1-4da0-8337-8ff0e91ba4a9)
@@ -1648,7 +1650,7 @@ Lato programmazione conviene tenere traccia della mia app :
 
 
 
-
+```
 -- Count of Connections by Login Name/Process (i.e. how many connections does an app have open)
 -- ------------------------------------------------------------------------------------------------
 SELECT
@@ -1663,11 +1665,62 @@ GROUP BY
     host_name,
     host_process_id;
 
+```
+
+
+
+______________________________________________________________________________________
 
 
 
 
 
+-- Finding statements running in the database right now (including if a statement is blocked by another)
+-- -----------------------------------------------------------------------------------------------
+
+```
+SELECT
+        [DatabaseName] = db_name(rq.database_id),
+        s.session_id, 
+        rq.status,
+        [SqlStatement] = SUBSTRING (qt.text,rq.statement_start_offset/2,
+            (CASE WHEN rq.statement_end_offset = -1 THEN LEN(CONVERT(NVARCHAR(MAX),
+            qt.text)) * 2 ELSE rq.statement_end_offset END - rq.statement_start_offset)/2),        
+        [ClientHost] = s.host_name,
+        [ClientProgram] = s.program_name, 
+        [ClientProcessId] = s.host_process_id, 
+        [SqlLoginUser] = s.login_name,
+        [DurationInSeconds] = datediff(s,rq.start_time,getdate()),
+        rq.start_time,
+        rq.cpu_time,
+        rq.logical_reads,
+        rq.writes,
+        [ParentStatement] = qt.text,
+        p.query_plan,
+        rq.wait_type,
+        [BlockingSessionId] = bs.session_id,
+        [BlockingHostname] = bs.host_name,
+        [BlockingProgram] = bs.program_name,
+        [BlockingClientProcessId] = bs.host_process_id,
+        [BlockingSql] = SUBSTRING (bt.text, brq.statement_start_offset/2,
+            (CASE WHEN brq.statement_end_offset = -1 THEN LEN(CONVERT(NVARCHAR(MAX),
+            bt.text)) * 2 ELSE brq.statement_end_offset END - brq.statement_start_offset)/2)
+    FROM sys.dm_exec_sessions s
+    INNER JOIN sys.dm_exec_requests rq
+        ON s.session_id = rq.session_id
+    CROSS APPLY sys.dm_exec_sql_text(rq.sql_handle) as qt
+    OUTER APPLY sys.dm_exec_query_plan(rq.plan_handle) p
+    LEFT OUTER JOIN sys.dm_exec_sessions bs
+        ON rq.blocking_session_id = bs.session_id
+    LEFT OUTER JOIN sys.dm_exec_requests brq
+        ON rq.blocking_session_id = brq.session_id
+    OUTER APPLY sys.dm_exec_sql_text(brq.sql_handle) as bt
+    WHERE s.is_user_process =1
+        AND s.session_id <> @@spid
+ AND rq.database_id = DB_ID()  -- Comment out to look at all databases
+    ORDER BY rq.start_time ASC;
+
+```
 
 
 
