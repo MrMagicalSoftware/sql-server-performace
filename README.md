@@ -1783,8 +1783,7 @@ SELECT TOP 20
     
     
     
-    ```
--- ------------------------------------------------------------------------------------------------
+```
 SELECT TOP 20    
         DatabaseName = DB_NAME(CONVERT(int, epa.value)), 
         [Execution count] = qs.execution_count,
@@ -1811,8 +1810,6 @@ SELECT TOP 20
     WHERE epa.attribute = 'dbid'
         AND epa.value = db_id()
     ORDER BY [AverageElapsedTime] DESC; --Other column aliases can be used
-
-
 ```
 
 
