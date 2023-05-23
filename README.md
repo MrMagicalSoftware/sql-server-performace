@@ -1326,12 +1326,40 @@ Viene creato un indice non clusterizzato chiamato "IX_IndexName" sulla tabella "
 ![Schermata del 2023-05-23 15-53-49](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/8cb1ef79-e355-49a2-aed6-b465eba92e1d)
 
 
+> Values will be strored with index key, but they are not part of the index key
 
 
+esempio di creazione di un indice non clusterizzato con la clausola INCLUDE in SQL Server:
 
+Supponiamo di avere una tabella chiamata "Orders" con le seguenti colonne:
 
+- OrderID (colonna chiave)
+- CustomerID
+- OrderDate
+- ShipAddress
+- TotalAmount
 
+Vogliamo creare un indice non clusterizzato sulla colonna "CustomerID" e includere le colonne "OrderDate" e "TotalAmount" nell'indice per migliorare le prestazioni delle query che richiedono solo quelle colonne.
 
+La query per la creazione dell'indice potrebbe essere la seguente:
+
+```
+CREATE NONCLUSTERED INDEX IX_CustomerID
+ON Orders (CustomerID)
+INCLUDE (OrderDate, TotalAmount);
+```
+
+Con questa query, stiamo creando un indice non clusterizzato chiamato "IX_CustomerID" sulla tabella "Orders" utilizzando la colonna "CustomerID" come colonna chiave. Le colonne "OrderDate" e "TotalAmount" vengono incluse nell'indice tramite la clausola INCLUDE.
+
+Ora, quando eseguiamo una query che richiede solo le colonne incluse nell'indice, ad esempio:
+
+```
+SELECT OrderDate, TotalAmount
+FROM Orders
+WHERE CustomerID = '12345';
+```
+
+Il motore di database può utilizzare l'indice creato per ottenere i valori di "OrderDate" e "TotalAmount" direttamente dall'indice stesso, senza dover accedere alla tabella di base. Ciò può migliorare le prestazioni dell'esecuzione della query.
 
 
 
