@@ -1813,11 +1813,84 @@ SELECT TOP 20
 ```
 
 
+## LOOKING FOR MISSING INDEXES
+
+```
+
+-- Looking for Missing Indexes
+-- ------------------------------------------------------------------------------------------------
+SELECT     
+    TableName = d.statement,
+    d.equality_columns, 
+    d.inequality_columns,
+    d.included_columns, 
+    s.user_scans,
+    s.user_seeks,
+    s.avg_total_user_cost,
+    s.avg_user_impact,
+    AverageCostSavings = ROUND(s.avg_total_user_cost * (s.avg_user_impact/100.0), 3),
+    TotalCostSavings = ROUND(s.avg_total_user_cost * (s.avg_user_impact/100.0) * (s.user_seeks + s.user_scans),3)
+FROM sys.dm_db_missing_index_groups g
+INNER JOIN sys.dm_db_missing_index_group_stats s
+    ON s.group_handle = g.index_group_handle
+INNER JOIN sys.dm_db_missing_index_details d
+    ON d.index_handle = g.index_handle
+WHERE d.database_id = db_id()
+ORDER BY TableName, TotalCostSavings DESC;
+```
 
 
 
 
+Questa query restituisce informazioni sui gruppi di indici mancanti nel database corrente, inclusi i dettagli sugli indici mancanti, le statistiche di utilizzo e i potenziali risparmi di costo associati.
 
+Ecco una descrizione delle colonne restituite dalla query:
+
+- `TableName`: Nome della tabella per cui è stato identificato un gruppo di indici mancanti.
+- `equality_columns`: Colonne che richiedono uguaglianza nella clausola WHERE delle query.
+- `inequality_columns`: Colonne che richiedono disuguaglianza (>, <, BETWEEN, ecc.) nella clausola WHERE delle query.
+- `included_columns`: Colonne che sono suggerite per essere incluse nell'indice mancante.
+- `user_scans`: Numero di scansioni effettuate dagli utenti per la tabella associata all'indice mancante.
+- `user_seeks`: Numero di ricerche effettuate dagli utenti per la tabella associata all'indice mancante.
+- `avg_total_user_cost`: Costo medio totale per le operazioni di accesso agli indici mancanti.
+- `avg_user_impact`: Impatto medio degli indici mancanti sulle query.
+- `AverageCostSavings`: Risparmio di costo medio stimato per ogni query in base all'impatto degli indici mancanti.
+- `TotalCostSavings`: Risparmio di costo totale stimato per tutte le query in base all'impatto e al numero di ricerche e scansioni.
+
+L'obiettivo principale della query è identificare gli indici mancanti che potrebbero migliorare le prestazioni delle query nel database. Viene fornito un elenco di tabelle associate agli indici mancanti, insieme a informazioni dettagliate sugli indici mancanti e le statistiche di utilizzo corrispondenti. Inoltre, vengono calcolati i potenziali risparmi di costo stimati in base all'impatto degli indici mancanti e al numero di ricerche e scansioni effettuate dagli utenti.
+
+L'output della query verrà ordinato per nome della tabella e per il valore del `TotalCostSavings` in ordine decrescente, in modo da visualizzare i potenziali risparmi di costo più significativi in cima alla lista.
+
+
+______________________________________________________________________________________________________
+
+
+
+## FINDING PERFORMANCE BOTTLENECKS IN SQL SERVER
+
+
+
+-- Getting Stats on What Indexes are Used and What Indexes are Not
+-- ------------------------------------------------------------------------------------------------
+SELECT
+    [DatabaseName] = DB_Name(db_id()),
+    [TableName] = OBJECT_NAME(i.object_id),
+    [IndexName] = i.name, 
+    [IndexType] = i.type_desc,
+    [TotalUsage] = IsNull(user_seeks, 0) + IsNull(user_scans, 0) + IsNull(user_lookups, 0),
+    [UserSeeks] = IsNull(user_seeks, 0),
+    [UserScans] = IsNull(user_scans, 0), 
+    [UserLookups] = IsNull(user_lookups, 0),
+    [UserUpdates] = IsNull(user_updates, 0)
+FROM sys.indexes i 
+INNER JOIN sys.objects o
+    ON i.object_id = o.object_id
+LEFT OUTER JOIN sys.dm_db_index_usage_stats s
+    ON s.object_id = i.object_id
+    AND s.index_id = i.index_id
+WHERE 
+    (OBJECTPROPERTY(i.object_id, 'IsMsShipped') = 0)
+ORDER BY [TableName], [IndexName];
 
 
 
