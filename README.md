@@ -7,6 +7,10 @@ https://go.microsoft.com/fwlink/?linkid=866662
 ________________
 
 
+> https://mode.com/sql-tutorial/sql-window-functions/
+
+
+
 FORMAT A GIT README :
 
 https://docs.github.com/en/get-started/writing-on-github/getting-started-with-writing-and-formatting-on-github/basic-writing-and-formatting-syntax
@@ -918,7 +922,6 @@ When we say that we want our **indexes to be selective** , we are saying that we
 
 
 
-> https://mode.com/sql-tutorial/sql-window-functions/
 
 
 ________________________________________________
