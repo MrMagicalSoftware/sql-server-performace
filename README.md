@@ -960,7 +960,7 @@ WHERE SalesOrderID > 43659
 
 This query returns a result set containing 121305 rows. Applying this value in the formula, we get the following.
 
-Selectivity = 121305/12137
+Selectivity = 121305/121317
 = 0.99990108
 
 >Un valore di selettività pari a 1 significa che vengono restituite tutte le righe della tabella. Una delle principali idee sbagliate su questo argomento, che deve essere chiarita, è che i dati non possono mai avere una selettività alta o bassa. È la query.
@@ -989,13 +989,7 @@ ________________________________________________________________________________
 
 Una selectivity index elevata significa che l'indice può identificare rapidamente un sottoinsieme ristretto di righe corrispondenti ai criteri di ricerca, mentre una selectivity index bassa indica che l'indice potrebbe non essere molto efficace nel ridurre il numero di righe esaminate.
 
-Per comprendere meglio, ecco un esempio:
 
-Supponiamo di avere una tabella "Prodotti" con le seguenti colonne: "ID" (univoco per ogni prodotto), "Nome" e "Prezzo". Immaginiamo di creare un indice sulla colonna "Prezzo".
-
-Se eseguiamo una query come "SELECT * FROM Prodotti WHERE Prezzo = 50", la selectivity index dell'indice ci dirà quanto velocemente l'indice può individuare le righe con un prezzo di 50. Se solo una piccola percentuale dei prodotti ha un prezzo di 50, allora l'indice avrà una selectivity index elevata. Ciò significa che l'indice ridurrà drasticamente il numero di righe da esaminare per trovare le corrispondenze desiderate.
-
-D'altra parte, se eseguiamo una query come "SELECT * FROM Prodotti WHERE Prezzo = 10", ma la maggior parte dei prodotti ha un prezzo di 10, l'indice avrà una selectivity index bassa. In questo caso, l'indice non sarà molto utile nel ridurre il numero di righe esaminate e potrebbe richiedere più tempo per eseguire la query.
 
 In generale, una selectivity index elevata è desiderabile perché consente di recuperare rapidamente i dati desiderati, migliorando le prestazioni delle query. Gli indici vengono progettati in base alla distribuzione dei dati nella tabella e alle query che verranno eseguite per ottimizzare la selectivity index e migliorare le prestazioni complessive del sistema di database.
 
@@ -1010,16 +1004,22 @@ Selectivity :
 Number of rows matching the predicate / total number of rows
 
 
+>DEFINIZIONI
+
 --High selecticity means low number of records are being returned
 --Low selectivity means hight number of records are being returned
 
 
 
+Selectivity = 121305/121317
+= 0.99990108
+
+La mia selettività è bassa 
+
+Closer to 1 ? means you get all the records
 
 
-
-
-
+> DATA IS NEVER HIGHLY OR LOW SELECTIVE .ITS THE QUERY
 
 
 
