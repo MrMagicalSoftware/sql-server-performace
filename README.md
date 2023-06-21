@@ -2087,7 +2087,23 @@ In sql profiler:
 
 
 
+ ## Introduction to using extended events for sql tracing
 
+
+> Use for sql server 2012 and later , sql azure.
+> Uses microsoft's event tracing for windows (ETW ) framework
+> Access to a richer set of events more filtering options
+
+
+
+
+
+
+
+
+
+
+ 
 
 
 
