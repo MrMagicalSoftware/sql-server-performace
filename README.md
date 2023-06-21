@@ -1917,10 +1917,17 @@ ________________________________________________________________________________
 
 
 
-#Capturing Trace Logs of Application from SQL Server
+# Capturing Trace Logs of Application from SQL Server
+
+
+## Capturing what your application is Doing inside sql server.
 
 
 
+![Schermata 2023-06-21 alle 11 45 27](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/3bfe7b43-4bed-48c9-af17-5e76554d999f)
+
+
+ 
 
 
 
