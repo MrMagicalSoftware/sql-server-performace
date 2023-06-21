@@ -1964,6 +1964,7 @@ oppure posso avviarlo anche da qui :
 
 
 
+![Schermata 2023-06-21 alle 12 10 55](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/dedb48ed-a4d6-4b5e-ac04-68b07763e1d6)
 
 
 
