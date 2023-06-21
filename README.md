@@ -2128,7 +2128,10 @@ Selezionare New Session
 Seleziono il template Query Batch Tracking
 
 
+![Schermata 2023-06-21 alle 15 01 21](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/c52a4a81-e3cf-4c3d-ad2e-a76b52e3a4aa)
+![Schermata 2023-06-21 alle 15 02 57](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/81f25573-1661-45d0-9982-08c9d84cfd6a)
 
+![Schermata 2023-06-21 alle 15 04 23](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/32ef4564-82c6-4689-a4ec-b298231267dd)
 
 
 
