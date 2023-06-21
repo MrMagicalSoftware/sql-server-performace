@@ -1968,6 +1968,23 @@ oppure posso avviarlo anche da qui :
 
 
 
+Ricordarsi che quando si ci logga bisogna avere tutti i permessi necessari.
+
+
+
+Quando compare questo menu conviene anche dire dove verrà salvato il file ,
+conviene anche almazare il file size in MB 
+
+Enable file rollover YES 
+
+
+![Schermata 2023-06-21 alle 12 14 08](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/ad684dbd-f9f0-488e-8e78-dee508da42b5)
+
+
+
+
+
+
 
 
 
