@@ -2097,6 +2097,7 @@ In sql profiler:
 ** PERMISSION FOR EXTENDED EVENTS **
 
 
+![Schermata 2023-06-21 alle 14 43 16](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/e07d1263-d830-4e56-832b-f5bafc76ec89)
 
 
 
