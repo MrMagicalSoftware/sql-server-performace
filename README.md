@@ -2030,6 +2030,25 @@ Possiamo notare che se clicco su Reads , Whites , Duration , i dati non vengono 
 ![Schermata 2023-06-21 alle 12 35 10](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/7b48c8ec-d761-4e9d-88b8-aefb3fbce461)
 
 
+Si apre un menu di per fare il login ...
+
+
+![Schermata 2023-06-21 alle 12 37 35](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/7a01eb38-6775-4424-bb1d-7d13a41292bd)
+
+
+apro la tabella e ora posso lavorarci sopra :
+
+
+![Schermata 2023-06-21 alle 12 39 06](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/2ae69bf0-badb-485a-b43e-0e468929ff35)
+
+
+
+
+
+
+
+
+
 
 
 
