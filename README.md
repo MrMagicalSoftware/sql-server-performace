@@ -1993,9 +1993,11 @@ Ora mi spost nel secondo tab chiamato Events Selection :
 
 
 
+![Schermata 2023-06-21 alle 12 22 40](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/5a24d13d-5d31-443c-a572-88c14cf7108a)
 
 
 
+![Schermata 2023-06-21 alle 12 24 04](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/c57fc175-3f89-42a4-91fa-229e2a96e287)
 
 
 
