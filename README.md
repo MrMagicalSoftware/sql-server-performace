@@ -1981,6 +1981,19 @@ Enable file rollover YES
 ![Schermata 2023-06-21 alle 12 14 08](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/ad684dbd-f9f0-488e-8e78-dee508da42b5)
 
 
+Ora mi spost nel secondo tab chiamato Events Selection :
+
+![Schermata 2023-06-21 alle 12 18 15](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/1eac57d8-fed3-4c1f-87e1-fa655288b054)
+
+![Schermata 2023-06-21 alle 12 19 21](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/5e974b13-c0a0-4045-8566-fa15a2449a3a)
+
+![Schermata 2023-06-21 alle 12 20 11](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/455f8323-54eb-4676-be7a-b19e5c2e3629)
+
+![Schermata 2023-06-21 alle 12 20 44](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/83c155e2-b8b9-4251-8468-b26f8ba2f29e)
+
+
+
+
 
 
 
