@@ -1945,11 +1945,32 @@ ________________________________________________________________________________
 REQUIRED PERSMISSION :
 
 
-![Schermata 2023-06-21 alle 12 03 33](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/08e8b0d7-fea5-4ef4-baea-7b5da3536eb4)
 
 
 
 ## SETTING UP A SQL PROFILER TRACE 
+
+
+
+Posso avviare l'sql profiler da qui :
+
+![Schermata 2023-06-21 alle 12 03 33](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/08e8b0d7-fea5-4ef4-baea-7b5da3536eb4)
+
+
+oppure posso avviarlo anche da qui :
+
+
+![Schermata 2023-06-21 alle 12 09 17](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/5a590715-2bf7-4ceb-8696-ed517f59bb48)
+
+
+
+
+
+
+
+
+
+
 
 
 
