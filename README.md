@@ -1942,7 +1942,10 @@ ________________________________________________________________________________
 
 
 
+REQUIRED PERSMISSION :
 
+
+![Schermata 2023-06-21 alle 12 03 33](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/08e8b0d7-fea5-4ef4-baea-7b5da3536eb4)
 
 
 
