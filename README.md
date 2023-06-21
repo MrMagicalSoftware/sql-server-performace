@@ -2043,12 +2043,19 @@ apro la tabella e ora posso lavorarci sopra :
 
 
 
+## Running a trace as a Server Side Trace.
+
+
+> More efficient that interactive tracing
+> Use sql profiler to define the trace
+> Generate sql file of commands to run trace
 
 
 
+![Schermata 2023-06-21 alle 12 43 09](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/d574f12a-7ef0-45d1-866c-0b9ab19f2916)
 
 
-
+![Schermata 2023-06-21 alle 12 44 59](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/ddd39350-b657-4a96-a139-5bbdef8aaa0c)
 
 
 
