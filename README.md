@@ -2080,6 +2080,7 @@ SELECT * FROM sys.fn_trace_getinfo(0);
 ![Schermata 2023-06-21 alle 12 56 29](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b80a9ff3-8701-4431-a231-db0b3c98945b)
 
 
+![Schermata 2023-06-21 alle 12 58 09](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/a706726f-93e1-4fa7-84e4-44a218292bac)
 
 
 
