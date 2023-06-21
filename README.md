@@ -2116,5 +2116,20 @@ In sql profiler:
 ![Schermata 2023-06-21 alle 14 56 44](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/402ee5ac-0008-4b2e-b079-022155ea0bba)
 
 
+Selezionare New Session
+
+
+![Schermata 2023-06-21 alle 14 58 25](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/69c26a3d-3201-4f3c-9b51-c89206ea25af)
+
+
+![Schermata 2023-06-21 alle 14 59 23](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/f9ad712d-8428-4774-bd67-fd46c6b8afc5)
+
+
+Seleziono il template Query Batch Tracking
+
+
+
+
+
 
 
