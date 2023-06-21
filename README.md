@@ -2094,7 +2094,7 @@ In sql profiler:
 > Uses microsoft's event tracing for windows (ETW ) framework
 > Access to a richer set of events more filtering options
 
-
+** PERMISSION FOR EXTENDED EVENTS **
 
 
 
