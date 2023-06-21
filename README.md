@@ -1999,6 +1999,36 @@ Ora mi spost nel secondo tab chiamato Events Selection :
 
 ![Schermata 2023-06-21 alle 12 24 04](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/c57fc175-3f89-42a4-91fa-229e2a96e287)
 
+AD esempio se voglio catturare tutte le query più grandi di 5 secondi , andrò a scrivere : 5000 , perchè sono in millisecondi.
+
+
+
+![Schermata 2023-06-21 alle 12 26 49](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/406ad6e5-65f3-4b60-98ec-410ca6332549)
+
+
+
+## Running a sql profiler trace
+
+
+![Schermata 2023-06-21 alle 12 28 28](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/4ca8b920-4fef-4ec7-9a71-b77e11af716b)
+
+
+NOTA : ATTENZIONE AD USARE QUESTA MODALITA' INTERATTIVA SU SERVER PERCHÈ DEGRADA LE PERFORMANCE 
+
+
+![Schermata 2023-06-21 alle 12 31 01](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/a54e93f7-2723-4458-934b-7f02ffed9153)
+
+
+
+![Schermata 2023-06-21 alle 12 32 01](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/92fd8ecd-cc43-497d-8275-faa4e97df039)
+
+
+
+
+
+
+
+
 
 
 
