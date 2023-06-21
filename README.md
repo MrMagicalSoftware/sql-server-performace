@@ -1938,6 +1938,7 @@ ________________________________________________________________________________
 
 
 
+![Schermata 2023-06-21 alle 11 55 34](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/15236ff8-ac27-44b9-9e77-1363ccb2a5c9)
 
 
 
