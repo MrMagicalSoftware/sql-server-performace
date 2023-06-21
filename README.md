@@ -2058,7 +2058,26 @@ apro la tabella e ora posso lavorarci sopra :
 ![Schermata 2023-06-21 alle 12 44 59](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/ddd39350-b657-4a96-a139-5bbdef8aaa0c)
 
 
+se ora apro il file , ottengo :
+
 ![Schermata 2023-06-21 alle 12 47 11](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/1af83cca-7ef8-4c4f-a019-c07eae6fbe4d)
+
+
+cambio il path N'InsertFileNameHere'
+
+N'D:\SSDSJADJSADSJAJ\jsjjad\ServiceSideTrace 
+
+
+Eseguo lo script 
+
+
+---per ottenere tutte le info sul server side traces
+
+SELECT * FROM sys.fn_trace_getinfo(0);
+
+
+
+![Schermata 2023-06-21 alle 12 56 29](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/b80a9ff3-8701-4431-a231-db0b3c98945b)
 
 
 
