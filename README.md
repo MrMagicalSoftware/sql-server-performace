@@ -2108,8 +2108,12 @@ In sql profiler:
 
 
  
+## Setting up an Extended Events Trace Session
 
-
+![Schermata 2023-06-21 alle 14 55 58](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/ec2bb5a8-c1e0-4c0c-8d49-02d540f21a46)
+![Schermata 2023-06-21 alle 14 56 13](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/594a0220-5e53-48e4-9c6e-42037a9fb3cd)
+![Schermata 2023-06-21 alle 14 56 24](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/10ebfbd8-0d02-424c-9ad7-d3e5e8a63977)
+![Schermata 2023-06-21 alle 14 56 44](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/402ee5ac-0008-4b2e-b079-022155ea0bba)
 
 
 
