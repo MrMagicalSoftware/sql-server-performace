@@ -1934,6 +1934,7 @@ ________________________________________________________________________________
 
 
 
+![Schermata 2023-06-21 alle 11 52 49](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/91af3de7-4da5-48c0-ab51-3c68d894f157)
 
 
 
