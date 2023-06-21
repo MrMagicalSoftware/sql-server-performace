@@ -2024,9 +2024,10 @@ NOTA : ATTENZIONE AD USARE QUESTA MODALITA' INTERATTIVA SU SERVER PERCHÈ DEGRAD
 
 
 
+Possiamo notare che se clicco su Reads , Whites , Duration , i dati non vengono ordinati , per fare questo mi sposto nel menù file , save as ... ..
 
 
-
+![Schermata 2023-06-21 alle 12 35 10](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/7b48c8ec-d761-4e9d-88b8-aefb3fbce461)
 
 
 
