@@ -2081,8 +2081,9 @@ SELECT * FROM sys.fn_trace_getinfo(0);
 ![Schermata 2023-06-21 alle 12 58 09](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/a706726f-93e1-4fa7-84e4-44a218292bac)
 
 
+In sql profiler:
 
-
+![Schermata 2023-06-21 alle 13 27 00](https://github.com/MrMagicalSoftware/sql-server-performace/assets/98833112/95d64ddb-bbbf-4175-95ff-44ca3afc2404)
 
 
 
